@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!--------------------------meta-------------------------->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keword" content="검색어">
+		<meta name="description" content="사이트소개">
+
+	<!--------------------------script-------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
+
+		<script type="text/javascript"> //스크롤 한 화면단위 마우스 휠이동
+       window.onload = function () {
+            var elm = "section";
+          $(elm).each(function (index) {
+                // 개별적으로 Wheel 이벤트 적용
+                $(this).on("mousewheel DOMMouseScroll", function (e) {
+                    e.preventDefault();
+                    var delta = 0;
+                    if (!event) event = window.event;
+                    if (event.wheelDelta) {
+                        delta = event.wheelDelta / 120;
+                        if (window.opera) delta = -delta;
+                    } 
+                    else if (event.detail)
+                        delta = -event.detail / 3;
+                    var moveTop = $(window).scrollTop();
+                    var elmSelecter = $(elm).eq(index);
+                    // 마우스휠을 위에서 아래로
+                    if (delta < 0) {
+                        if ($(elmSelecter).next() != undefined) {
+                            try{
+                                moveTop = $(elmSelecter).next().offset().top;
+                            }catch(e){}
+                        }
+                    // 마우스휠을 아래에서 위로
+                    } else {
+                        if ($(elmSelecter).prev() != undefined) {
+                            try{
+                                moveTop = $(elmSelecter).prev().offset().top;
+                            }catch(e){}
+                        }
+                    }
+                     
+                    // 화면 이동 0.8초(800)
+                    $("html,body").stop().animate({
+                        scrollTop: moveTop + 'px'
+                    }, {
+                        duration: 800, complete: function () {
+                        }
+                    });
+                });        
+            });
+          $(window).resize(function(){ //창 크기 1200이하에서 div 단위 스크롤 사용하지 않기
+            if($(window).width()<1200){
+             $(elm).off("mousewheel DOMMouseScroll");
+           	}else{
+            	$(elm).on("mousewheel DOMMouseScroll",function(){
+            		location.reload();
+            	});
+           	}
+          });          
+        }
+    </script>
+
+    <!--<script type="text/javascript">
+    	$(document).ready(function () {			
+			function onScroll(event){
+			    var scrollPos = $(document).scrollTop();		    
+			    $('header ul li a').each(function () {
+			        var currLink = $(this);
+			        var refElement = $(currLink.attr("href"));
+			        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+			            $('header ul li a').find('img').attr('src','images/li04.png');
+			            currLink.find('img').attr('src','images/li03.gif');
+			        }
+			        else{
+			            currLink.find('img').attr('src','images/li04.png');
+			        }
+			    });
+			}
+    </script>-->
+
+    <script type="text/javascript"> //사이드바 네비 컨트롤   	
+    	$(document).ready(function () {
+		    $(document).on("scroll", onScroll);
+		    
+		    //smoothscroll
+		    $('a[href^="#"]').on('click', function (e) {
+		        e.preventDefault();
+		        $(document).off("scroll");		        
+		        
+		        $('a').each(function () {
+		            $(this).find('img').attr('src','images/li04.png');
+		        });      
+		        $(this).find('img').attr('src','images/li03.gif');
+		      
+		        var target = this.hash,
+		            menu = target;
+		        $target = $(target);
+		        $('html, body').stop().animate({
+		            'scrollTop': $target.offset().top+2
+		        }, 500, 'swing', function () {
+		            window.location.hash = target;
+		            $(document).on("scroll", onScroll);
+		        });
+		    });
+			});
+    </script>
+
+    <script type="text/javascript"> //사이드바 모양변화 컨트롤
+    	$(function(){    		
+    		$(window).scroll(function(){    
+    			var img = $('header ul li').find('img');		
+					if($(document).scrollTop()>970){
+						img.attr('src','images/li04.png');
+						$('header ul li').eq(1).find('img').attr('src','images/li03.gif');						
+					}else{
+						img.attr('src','images/li04.png');
+						$('header ul li').eq(0).find('img').attr('src','images/li03.gif');	
+					}
+					if($(document).scrollTop()>1940){
+						$('header ul li').find('img').attr('src','images/li01.png');
+						$('header ul li').eq(2).find('img').attr('src','images/li02.gif');						
+					}
+					if($(document).scrollTop()>2910){
+						$('header ul li').find('img').attr('src','images/li04.png');
+						$('header ul li').eq(3).find('img').attr('src','images/li03.gif');						
+					}
+					if($(document).scrollTop()>3880){
+						$('header ul li').find('img').attr('src','images/li04.png');
+						$('header ul li').eq(4).find('img').attr('src','images/li03.gif');						
+					}
+					if($(document).scrollTop()>4850){
+						$('header ul li').find('img').attr('src','images/li01.png');
+						$('header ul li').eq(5).find('img').attr('src','images/li02.gif');						
+					}
+				});				
+    	})
+    </script>
+
+    <script type="text/javascript"> //section2 슬라이드
+	   		$(document).ready(function(){ 
+		        var list = $("#section2 #list-in");
+		        var showNum = 9;
+		        var num = 0;
+		        var total = $(">dl", list).length;
+		        var liWidth = $("dl:first", list).width()+66;
+		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
+		        list.append(copyObj);
+		        $("#section2 .next").on("click", function(){
+		            if(num == total){ 
+		                num = 0; 
+		                list.css("margin-left",num); 
+		            }
+		            num++; 
+		            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		            return false;
+		        });
+		        
+		        
+		        $("#section2 .prev").on("click", function(){
+		          if(num == 0){    
+		              num = total; 
+		              list.css("margin-left", -num*liWidth+"px");
+		          }
+		          num--;
+		          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		          return false;
+		        });
+		    });  
+		</script>
+
+	<!--------------------------link-------------------------->
+		<link rel="icon" type="image/x-icon" href="images/web_logo.png">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+
+	<!--------------------------font-------------------------->
+		<style>
+			@font-face {
+			  font-family: 고양L;
+			  src: url(font/GoyangIlsan_L.woff);
+			}
+			@font-face {
+			  font-family: 고양R;
+			  src: url(font/GoyangIlsan_R.woff);
+			}
+			@font-face {
+			  font-family: 경기R;
+			  src: url(font/GyeonggiBatangR.woff);
+			}
+			@font-face {
+			  font-family: 경기B;
+			  src: url(font/GyeonggiBatangB.woff);
+			}
+		</style>
+
+	<!--------------------------style-------------------------->
+		<style type="text/css">
+			* {margin:0; padding:0; box-sizing:border-box;}
+			body {font:normal 16px 고양L; color:#000;}
+			img {vertical-align:top;}
+			a{text-decoration:none; color:#000;}
+			li{list-style:none;}
+		</style>
+
+	<title>비짓제주 VISIT JEJU - 제주도 공식 관광정보 포털</title>
+</head>
+<body>
+<div id="wrapper">
+	<header>
+		<p><img src="images/menu_icon.gif" alt="메뉴"></p>
+		<ul>
+			<li><a class="active" href="#home"><img src="images/li04.png" alt="아이콘"></a></li>
+			<li><a href="#section2"><img src="images/li04.png" alt="아이콘"></a></li>
+			<li><a href="#section3"><img src="images/li04.png" alt="아이콘"></a></li>
+			<li><a href="#section4"><img src="images/li04.png" alt="아이콘"></a></li>
+			<li><a href="#section5"><img src="images/li04.png" alt="아이콘"></a></li>
+			<li><a href="#footer"><img src="images/li04.png" alt="아이콘"></a></li>
+		</ul>			
+	</header>
+	<div id="menu">
+			
+	</div>
+	<section id="home"><!--section1 main-->
+		<h1>그 계절에</h1> <h1>만난,</h1><h1>제주</h1>
+		<h1 id="logo"><img src="images/main_logo.png" alt="메인페이지 로고"></h1>
+		<p>VISIT JEJU</p>
+		<ul>
+			<li><img src="images/m_wv01.png" alt="파도1"></li>
+			<li><img src="images/m_wv02.png" alt="파도2"></li>
+			<li><img src="images/m_wv03.png" alt="파도3"></li>
+			<li><img src="images/m_wv04.png" alt="파도4"></li>
+		</ul>		
+	</section>
+
+	<section id="section2"><!--section2 제주도 모든 여행지를 한눈에-->
+		<h2>제주도 모든 여행지를 한 눈에</h2>
+		<p>내가 가본 제주는 어디까지일까? 수많은 제주의 아름다운 여행지를 취향에 따라 선택해보자.</p>
+		<span class="prev"><img src="images/prev.png" alt="이전"></span>
+		<div id="list">
+			<div id="list-in">
+				<dl><a href="#">
+					<dt><img src="images/sec2_01.jpg" alt="오설록티뮤지엄"></dt>
+					<dd>오설록티뮤지엄</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_02.jpg" alt="협재해수욕장"></dt>
+					<dd>협재해수욕장</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_03.jpg" alt="사려니숲길"></dt>
+					<dd>사려니숲길</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_04.jpg" alt="성산일출봉"></dt>
+					<dd>성산일출봉</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_05.jpg" alt="카멜리아힐"></dt>
+					<dd>카멜리아힐</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_06.jpg" alt="월정리해변"></dt>
+					<dd>월정리해변</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_07.jpg" alt="산굼부리"></dt>
+					<dd>산굼부리</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_08.jpg" alt="새별오름"></dt>
+					<dd>새별오름</dd>				
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/sec2_09.jpg" alt="비자림"></dt>
+					<dd>비자림</dd>				
+				</a></dl>
+			</div>
+		</div>
+		<span class="next"><img src="images/next.png" alt="다음"></span>
+		<ul class="upper-wave">
+			<li><img src="images/sec3_u_wave01.png" alt="파도1"></li>
+			<li><img src="images/sec3_u_wave02.png" alt="파도2"></li>
+			<li><img src="images/sec3_u_wave03.png" alt="파도3"></li>
+		</ul>
+	</section>
+
+	<section id="section3"><!--section3 제주도 먹거리 지도-->
+		<img src="images/section3.jpg" alt="section3">
+		<ul class="lower-wave">
+			<li><img src="images/sec3_u_wave01.png" alt="파도1"></li>
+			<li><img src="images/sec3_u_wave02.png" alt="파도2"></li>
+			<li><img src="images/sec3_u_wave03.png" alt="파도3"></li>
+		</ul>
+	</section>
+
+	<section id="section4"><!--section4 4계절 제주로 떠나보세요-->
+		<img src="images/section4.jpg" alt="section4">
+	</section>
+
+	<section id="section5"><!--section5 다양한 제주 숙소-->
+		<img src="images/section5.jpg" alt="section5">
+	</section>
+	
+	<footer id="footer">
+		<img src="images/footer.jpg" alt="footer">
+	</footer>	
+</div>	
+</body>
+</html>
