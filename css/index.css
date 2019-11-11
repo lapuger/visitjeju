@@ -29,12 +29,14 @@ header {
 		margin-bottom:1em;
 	}
 
+
+
 	section {
 		width:100%;
 		height:100%;
-		position:relative;
 		min-height:800px;
 		min-width:769px;
+		position:relative;
 	}
 	section>img {
 		width:100%;
@@ -50,12 +52,12 @@ header {
 	position:fixed; top:0; left:-100%; /*width=100%이므로 그만큼 밖으로 내보냄*/
 	z-index:1000;
 	text-align:right;	
-}
-#menu p {
-	font-size:30px;	
-	padding:20px;
-	cursor:pointer;
-}
+	}
+	#menu p {
+		font-size:30px;	
+		padding:20px;
+		cursor:pointer;
+	}
 
 #menu #menu-in {
 	position:relative;
@@ -480,41 +482,117 @@ header {
 	padding-bottom:12%;
 	text-align:center;
 	position:relative;
-}
-#section5 h2 {
-	border:2px solid #f15a24;
-	font-size:2.5em;
-	display:inline-block;
-	margin-top:8%;
-	padding:1.3% 5%;
-	letter-spacing:0.1em;
-}
-#section5 p {
-	font-size:3em;
-	font-family:고양B;
-	padding-top:1.8%;
-}
-#section5 ul {
-		width:100%;
-		position:relative;
-		bottom:0; left:0;
-		padding-top:5%;
-}
-#section5 ul li {
-	position:absolute;
-}
-#section5 ul li:first-child {
-	top:60%;
-	left:50%;
-	margin-left:-12em;
-	width:20em;
-	height:20em;
-	border-radius:100%;
-	background-color:#ffe23e;
-	animation: sun 9s infinite;	
-}
-@keyframes sun {
-	0% {transform:scale(1); background-color:#ffe23e;}
-	50% {transform:scale(1.1); background-color:#fff840;}
-	100% {transform:scale(1); background-color:#ffe23e;}
 	}
+	#section5 h2 {
+		border:2px solid #f15a24;
+		font-size:2.5em;
+		display:inline-block;
+		margin-top:8%;
+		padding:1.3% 5%;
+		letter-spacing:0.1em;
+	}
+	#section5 p {
+		font-size:3em;
+		font-family:고양B;
+		padding-top:1.8%;
+	}
+	#section5 ul {
+			width:100%;
+			position:relative; z-index:50;
+			bottom:-10%; left:0;
+			padding-top:5%;
+
+	}
+	#section5 ul li {
+		position:absolute;
+	}
+	#section5 ul li:first-child {
+		top:60%;
+		left:50%;
+		margin-left:-10em;
+		width:20em;
+		height:20em;
+		border-radius:100%;
+		background-color:#ffe23e;
+		animation: sun 9s infinite;	
+	}
+	@keyframes sun {
+		0% {transform:scale(1); background-color:#ffe23e;}
+		50% {transform:scale(1.1); background-color:#fff840;}
+		100% {transform:scale(1); background-color:#ffe23e;}
+		}
+
+#section6 {
+	width:100%;
+	height:1940px;
+	background:url(../images/section5.jpg) no-repeat;
+	margin-top:9%;
+	text-align:center;
+	position:relative;
+}
+
+#section6 #move p {
+	position:absolute;
+	top:0;
+	right:0;
+	}
+
+#section6 .content {
+	width:1200px;
+	margin:0 auto;
+	padding-top:3%;
+	position:relative;
+}
+#section6 .content h3 a {
+	color:#fff;
+	font:normal 1.8em 고양L;	
+}
+#section6 .content h3 {
+	text-align:left;
+	padding-bottom:3%;
+}
+#section6 span {
+	position:absolute;
+	top:40%;
+}
+#section6 .prev {
+	position:absolute;
+	left:-2%;
+}
+#section6 .next {
+	position:absolute;
+	right:-2%;
+}
+#section6 .content dl {
+	display:inline-block;
+	margin:2.5%;
+}
+#section6 .content dl dd:nth-of-type(1) {
+	color:#779aee;
+	font-size:1.6em;
+	margin-top:6%;
+}
+#section6 .content dl ol {
+	border:1px solid #779aee;
+	color:#779aee;
+	text-align:left;
+	padding:5%;
+	font-size:1.1em;
+	line-height:1.8;
+}
+#section6 .content dl dd:nth-of-type(2) {
+	color:#fff;
+	font:bold 2.5em 고양R;
+	letter-spacing:0.1em;
+	margin:2% 0;
+}
+#section6 .content dl ol li:before {
+	content:'- ';
+}
+#section6 .content dl:nth-of-type(2n) dd:nth-of-type(1) {
+	color:#ffc8e8;
+}
+#section6 .content dl:nth-of-type(2n) ol {
+	border:1px solid #ffc8e8;
+	color:#ffc8e8;
+}
