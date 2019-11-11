@@ -227,12 +227,108 @@
 					$('#section6 #move').find('p:nth-of-type(2)').animate({'right':'120%','top':'100%'},3000).fadeOut().animate({'right':'0%','top':'-50%'}).fadeIn();
 				}
 
-				$('#section6 #move').find('p:nth-of-type(3)').css({'right':'-30%','top':'40%','opacity':'0.3','transform' : 'rotate('+ 15 +'deg)'});
+				$('#section6 #move').find('p:nth-of-type(3)').css({'right':'-30%','top':'30%','opacity':'0.3','transform' : 'rotate('+ 15 +'deg)'});
 				setInterval(star03,5000);
 				function star03() {					
-					$('#section6 #move').find('p:nth-of-type(3)').animate({'right':'120%','top':'150%'},3000).fadeOut().animate({'right':'-30%','top':'40%'}).fadeIn();
+					$('#section6 #move').find('p:nth-of-type(3)').animate({'right':'120%','top':'150%'},3000).fadeOut().animate({'right':'-30%','top':'30%'}).fadeIn();
 				}
 			})
+		</script>
+
+		<script type="text/javascript"> //section6 슬라이드 제주공항주변
+	   		$(document).ready(function(){ 
+		        var list = $("#section6 #content1 .roomlist-in");
+		        var showNum = 3;
+		        var num = 0;
+		        var total = $(">dl", list).length;
+		        var liWidth = $("dl:first", list).width()+60;
+		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
+		        list.append(copyObj);
+		        $("#section6 #content1 .next").on("click", function(){
+		            if(num == total){ 
+		                num = 0; 
+		                list.css("margin-left",num); 
+		            }
+		            num++; 
+		            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		            return false;
+		        });
+		        
+		        
+		        $("#section6 #content1 .prev").on("click", function(){
+		          if(num == 0){    
+		              num = total; 
+		              list.css("margin-left", -num*liWidth+"px");
+		          }
+		          num--;
+		          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		          return false;
+		        });
+		    });  
+		</script>
+
+		<script type="text/javascript"> //section6 슬라이드 서귀포시
+	   		$(document).ready(function(){ 
+		        var list = $("#section6 #content2 .roomlist-in");
+		        var showNum = 3;
+		        var num = 0;
+		        var total = $(">dl", list).length;
+		        var liWidth = $("dl:first", list).width()+60;
+		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
+		        list.append(copyObj);
+		        $("#section6 #content2 .next").on("click", function(){
+		            if(num == total){ 
+		                num = 0; 
+		                list.css("margin-left",num); 
+		            }
+		            num++; 
+		            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		            return false;
+		        });
+		        
+		        
+		        $("#section6 #content2 .prev").on("click", function(){
+		          if(num == 0){    
+		              num = total; 
+		              list.css("margin-left", -num*liWidth+"px");
+		          }
+		          num--;
+		          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		          return false;
+		        });
+		    });  
+		</script>
+
+		<script type="text/javascript"> //section6 슬라이드 성산일출봉주변
+	   		$(document).ready(function(){ 
+		        var list = $("#section6 #content3 .roomlist-in");
+		        var showNum = 3;
+		        var num = 0;
+		        var total = $(">dl", list).length;
+		        var liWidth = $("dl:first", list).width()+60;
+		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
+		        list.append(copyObj);
+		        $("#section6 #content3 .next").on("click", function(){
+		            if(num == total){ 
+		                num = 0; 
+		                list.css("margin-left",num); 
+		            }
+		            num++; 
+		            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		            return false;
+		        });
+		        
+		        
+		        $("#section6 #content3 .prev").on("click", function(){
+		          if(num == 0){    
+		              num = total; 
+		              list.css("margin-left", -num*liWidth+"px");
+		          }
+		          num--;
+		          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		          return false;
+		        });
+		    });  
 		</script>
 
 	<!--------------------------link-------------------------->
@@ -501,123 +597,162 @@
 			</section>
 
 			<section id="section6"><!--section6 다양한 제주 숙소-->
-				<div class="content">		
+				<div class="content" id="content1">		
 					<h3><a href="#">제주공항 주변&gt;&gt;</a></h3>			
 					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
-					<div>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-01.png" alt="신라스테이 제주"></dt>
-							<dd>신라스테이 제주</dd>
-							<dd>81,000<small>원~</small></dd>
-							<dd>
-								<ol>
-									<li>제주 최고의 인기 숙소</li>
-									<li>아쿠아월드 워터파크 보유</li>
-								</ol>
-							</dd>
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-02.png" alt="메종글래드 제주"></dt>
-							<dd>메종글래드 제주</dd>
-							<dd>199,000원~</dd>
-							<dd>
-								<ol>
-									<li>제주국제공항과 10분 거리</li>
-									<li>야외 온수풀 포함 풍성한 부대시설</li>
-								</ol>
-							</dd>
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-03.png" alt="미르 게스트하우스"></dt>
-							<dd>미르 게스트하우스</dd>
-							<dd>81,000원~</dd>
-							<dd>
-								<ol>
-									<li>안전 인증 숙소</li>
-									<li>프랜차이즈 커피전문점 매치</li>
-								</ol>
-							</dd>
-						</a></dl>
+					<div class="roomlist">
+						<div class="roomlist-in">
+							<dl><a href="#">
+								<dt><img src="images/sec6-01-01.png" alt="신라스테이 제주"></dt>
+								<dd>신라스테이 제주</dd>
+								<dd>81,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>제주 최고의 인기 숙소</li>
+										<li>아쿠아월드 워터파크 보유</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-01-02.png" alt="메종글래드 제주"></dt>
+								<dd>메종글래드 제주</dd>
+								<dd>199,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>제주국제공항과 10분 거리</li>
+										<li>야외 온수풀 포함 풍성한 부대시설</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-01-03.png" alt="미르 게스트하우스"></dt>
+								<dd>미르 게스트하우스</dd>
+								<dd>81,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>안전 인증 숙소</li>
+										<li>프랜차이즈 커피전문점 매치</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-01-04.png" alt="제주bp게스트하우스"></dt>
+								<dd>제주bp게스트하우스</dd>
+								<dd>81,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>제주의 크고 오래된 집의 분위기</li>
+										<li>근처 바오젠 거리, 민오름 등이 위치</li>
+									</ol>
+								</dd>
+							</a></dl>
+						</div>
 					</div>
 					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
 				</div>
-				<div class="content">		
+				<div class="content" id="content2">		
 					<h3><a href="#">서귀포시&gt;&gt;</a></h3>			
 					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
-					<div>
-						<dl><a href="#">
-							<dt><img src="images/sec6-02-01.png" alt="신라스테이 제주"></dt>
-							<dd>신라스테이 제주</dd>
-							<dd>81,000<small>원~</small></dd>
-							<dd>
-								<ol>
-									<li>제주 최고의 인기 숙소</li>
-									<li>아쿠아월드 워터파크 보유</li>
-								</ol>
-							</dd>
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-02.png" alt="신라스테이 제주"></dt>
-							<dd>메종글래드 제주</dd>
-							<dd>199,000원~</dd>
-							<dd>
-								<ol>
-									<li>제주국제공항과 10분 거리</li>
-									<li>야외 온수풀 포함 풍성한 부대시설</li>
-								</ol>
-							</dd>
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-03.png" alt="신라스테이 제주"></dt>
-							<dd>미르 게스트하우스</dd>
-							<dd>81,000원~</dd>
-							<dd>
-								<ol>
-									<li>제주 최고의 인기 숙소</li>
-									<li>아쿠아월드 워터파크 보유</li>
-								</ol>
-							</dd>
-						</a></dl>
+					<div class="roomlist">
+						<div class="roomlist-in">
+							<dl><a href="#">
+								<dt><img src="images/sec6-02-01.png" alt="히든클리프 호텔 앤 네이쳐"></dt>
+								<dd>히든클리프 호텔 앤 네이쳐</dd>
+								<dd>170,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>예래 생태 보전지역에 위치</li>
+										<li>국내 최장 47미터 인피니티 풀 보유</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-02-02.png" alt="서귀포 KAL호텔"></dt>
+								<dd>서귀포 KAL호텔</dd>
+								<dd>199,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>푸른바다와 야자수 정원의 전경</li>
+										<li>승용차 10분거리 매일올레시장</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-02-03.png" alt="나날 게스트하우스"></dt>
+								<dd>나날 게스트하우스</dd>
+								<dd>15,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>제주 최고의 인기 숙소</li>
+										<li>아쿠아월드 워터파크 보유</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-02-04.png" alt="범섬풍경펜션"></dt>
+								<dd>범섬풍경펜션</dd>
+								<dd>45,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>범섬 방향 전객실 바다 조망</li>
+										<li>1층 카페 조식 무료 제공</li>
+									</ol>
+								</dd>
+							</a></dl>
+						</div>
 					</div>
 					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
 				</div>
-				<div class="content">		
-					<h3><a href="#">서귀포시&gt;&gt;</a></h3>			
+				<div class="content" id="content3">		
+					<h3><a href="#">성산일출봉 주변&gt;&gt;</a></h3>			
 					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
-					<div>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-01.png" alt="신라스테이 제주"></dt>
-							<dd>신라스테이 제주</dd>
-							<dd>81,000<small>원~</small></dd>
-							<dd>
-								<ol>
-									<li>제주 최고의 인기 숙소</li>
-									<li>아쿠아월드 워터파크 보유</li>
-								</ol>
-							</dd>
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-02.png" alt="신라스테이 제주"></dt>
-							<dd>메종글래드 제주</dd>
-							<dd>199,000원~</dd>
-							<dd>
-								<ol>
-									<li>제주국제공항과 10분 거리</li>
-									<li>야외 온수풀 포함 풍성한 부대시설</li>
-								</ol>
-							</dd>
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec6-01-03.png" alt="신라스테이 제주"></dt>
-							<dd>미르 게스트하우스</dd>
-							<dd>81,000원~</dd>
-							<dd>
-								<ol>
-									<li>제주 최고의 인기 숙소</li>
-									<li>아쿠아월드 워터파크 보유</li>
-								</ol>
-							</dd>
-						</a></dl>
+					<div class="roomlist">
+						<div class="roomlist-in">
+							<dl><a href="#">
+								<dt><img src="images/sec6-03-01.png" alt="휘닉스 제주 섭지코지"></dt>
+								<dd>휘닉스 제주 섭지코지</dd>
+								<dd>135,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>다양한 해양레저 서비스</li>
+										<li>무료 공항서틀 운행</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-03-02.png" alt="빠담빠담 게스트하우스"></dt>
+								<dd>빠담빠담 게스트하우스</dd>
+								<dd>20,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>객실마다 배치한 허브로 쾌적함 유지</li>
+										<li>감귤 농장에서 무료 감귤따기 체험</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-03-03.png" alt="꽃하루방게스트하우스"></dt>
+								<dd>꽃하루방게스트하우스</dd>
+								<dd>50,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>카페서 무료 조식 이용 가능</li>
+										<li>섭지코지/성산일출봉/우도 인근</li>
+									</ol>
+								</dd>
+							</a></dl>
+							<dl><a href="#">
+								<dt><img src="images/sec6-03-04.png" alt="메종드오조락"></dt>
+								<dd>메종드오조락</dd>
+								<dd>40,000<small>원~</small></dd>
+								<dd>
+									<ol>
+										<li>해가 가정 먼저 뜨는 마을 오조리 위치</li>
+										<li>카페서 무료 조식 이용 가능</li>
+									</ol>
+								</dd>
+							</a></dl>
+						</div>
 					</div>
 					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
 				</div>
@@ -629,7 +764,58 @@
 
 			</section>	
 			<footer id="footer">
-				<img src="images/footer.jpg" alt="footer">
+			<div id="fnb">
+				<dl><a href="#">
+					<dt><img src="images/fnb01.png" alt="장애인 관광정보"></dt>
+					<dd>장애인 관광정보</dd>
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/fnb02.png" alt="안내 책자"></dt>
+					<dd>안내책자</dd>
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/fnb03.png" alt="제주 관광지도"></dt>
+					<dd>제주 관광지도</dd>
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/fnb04.png" alt="제주 관광정보센터"></dt>
+					<dd>제주관광정보센터</dd>
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/fnb05.png" alt="관광업체등록신청"></dt>
+					<dd>관광업체등록신청</dd>
+				</a></dl>
+				<dl><a href="#">
+					<dt><img src="images/fnb06.png" alt="포토 제주"></dt>
+					<dd>포토제주</dd>
+				</a></dl>
+			</div>
+			<div>
+				<ul id="app">
+					<li>VISITJEJU<br/>APP</li>
+					<li><a href="#"><img src="images/app01.png" alt="안드로이드"></a></li>
+					<li><a href="#"><img src="images/app02.png" alt="IOS"></a></li>
+				</ul>
+				<ul id="sns">
+					<li><a href="#"><img src="images/sns01.png" alt="트위터"></a></li>
+					<li><a href="#"><img src="images/sns02.png" alt="페이스북"></a></li>
+					<li><a href="#"><img src="images/sns03.png" alt="네이버블로그"></a></li>
+					<li><a href="#"><img src="images/sns04.png" alt="인스타그램"></a></li>
+					<li><a href="#"><img src="images/sns05.png" alt="카카오톡"></a></li>
+				</ul>
+			</div>
+			<ul id="imp">
+				<li><a href="#">개인정보처리방침</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#">틀린정보신고</a></li>
+				<li><a href="#">제주관광문의</a></li>
+				<li><a href="#">제주관광사진이용</a></li>
+				<li><a href="#">제주소식</a></li>
+				<li><a href="#">관광업체등록신청</a></li>
+			</ul>
+			<address>
+				CopyrightⓒBoYoung Kim, All right reserved.
+			</address>
 			</footer>	
 		</div>
 	</div>	
