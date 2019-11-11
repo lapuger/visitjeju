@@ -103,10 +103,10 @@
             		location.reload();
             	});
            	}
-          });          
+          });
+          $('#section6').off("mousewheel DOMMouseScroll"); //section6에서 스크롤 사용하지않기              
         }
     </script>
-
 
     <script type="text/javascript"> //사이드바 네비 컨트롤   	
     	$(document).ready(function () {
@@ -140,30 +140,30 @@
     		$('header ul li').eq(0).find('img').attr('src','images/li03.gif');
     		$(window).scroll(function(){    
     			var img = $('header ul li').find('img');		
-					if($(document).scrollTop()>800){
+					if($(document).scrollTop()>900){
 						img.attr('src','images/li04.png');
 						$('header ul li').eq(1).find('img').attr('src','images/li03.gif');						
 					}else{
 						img.attr('src','images/li04.png');
 						$('header ul li').eq(0).find('img').attr('src','images/li03.gif');	
 					}
-					if($(document).scrollTop()>1600){
+					if($(document).scrollTop()>1800){
 						$('header ul li').find('img').attr('src','images/li01.png');
 						$('header ul li').eq(2).find('img').attr('src','images/li02.gif');						
 					}
-					if($(document).scrollTop()>2400){
+					if($(document).scrollTop()>2700){
 						$('header ul li').find('img').attr('src','images/li04.png');
 						$('header ul li').eq(3).find('img').attr('src','images/li03.gif');						
 					}
-					if($(document).scrollTop()>3200){
+					if($(document).scrollTop()>3600){
 						$('header ul li').find('img').attr('src','images/li04.png');
 						$('header ul li').eq(4).find('img').attr('src','images/li03.gif');						
 					}
-					if($(document).scrollTop()>4000){
+					if($(document).scrollTop()>4500){
 						$('header ul li').find('img').attr('src','images/li01.png');
-						$('header ul li').eq(5).find('img').attr('src','images/li02.gif');						
+						$('header ul li').eq(5).find('img').attr('src','images/li02.png');						
 					}
-					if($(document).scrollTop()>4800){
+					if($(document).scrollTop()>6300){
 						$('header ul li').find('img').attr('src','images/li01.png');
 						$('header ul li').eq(6).find('img').attr('src','images/li02.gif');						
 					}
@@ -210,6 +210,28 @@
 				}).mouseleave(function(){
 					$(this).find('dd').removeClass('hover');	
 				});
+			})
+		</script>
+
+		<script type="text/javascript"> //section6 별똥별 애니메이션
+			$(function(){
+				$('#section6 #move').find('p:first-of-type').css({'right':'-30%','top':'-50%','opacity':'0.5'});
+				setInterval(star01,4000);
+				function star01() {					
+					$('#section6 #move').find('p:first-of-type').animate({'right':'150%','top':'150%'},3000).fadeOut().animate({'right':'-50%','top':'-50%'}).fadeIn();
+				}
+
+				$('#section6 #move').find('p:nth-of-type(2)').css({'right':'0%','top':'-50%','opacity':'0.3'});
+				setInterval(star02,2000);
+				function star02() {					
+					$('#section6 #move').find('p:nth-of-type(2)').animate({'right':'120%','top':'100%'},3000).fadeOut().animate({'right':'0%','top':'-50%'}).fadeIn();
+				}
+
+				$('#section6 #move').find('p:nth-of-type(3)').css({'right':'-30%','top':'40%','opacity':'0.3','transform' : 'rotate('+ 15 +'deg)'});
+				setInterval(star03,5000);
+				function star03() {					
+					$('#section6 #move').find('p:nth-of-type(3)').animate({'right':'120%','top':'150%'},3000).fadeOut().animate({'right':'-30%','top':'40%'}).fadeIn();
+				}
 			})
 		</script>
 
@@ -479,13 +501,75 @@
 			</section>
 
 			<section id="section6"><!--section6 다양한 제주 숙소-->
-				<div>
-					<h3><a href="#">제주공항 주변&gt;&gt;</a></h3>
-					<span class="prev">&lt;</span>
+				<div class="content">		
+					<h3><a href="#">제주공항 주변&gt;&gt;</a></h3>			
+					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
 					<div>
-						<dl>
-							<dt><img src="" alt="신라스테이 제주"></dt>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-01.png" alt="신라스테이 제주"></dt>
 							<dd>신라스테이 제주</dd>
+							<dd>81,000<small>원~</small></dd>
+							<dd>
+								<ol>
+									<li>제주 최고의 인기 숙소</li>
+									<li>아쿠아월드 워터파크 보유</li>
+								</ol>
+							</dd>
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-02.png" alt="메종글래드 제주"></dt>
+							<dd>메종글래드 제주</dd>
+							<dd>199,000원~</dd>
+							<dd>
+								<ol>
+									<li>제주국제공항과 10분 거리</li>
+									<li>야외 온수풀 포함 풍성한 부대시설</li>
+								</ol>
+							</dd>
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-03.png" alt="미르 게스트하우스"></dt>
+							<dd>미르 게스트하우스</dd>
+							<dd>81,000원~</dd>
+							<dd>
+								<ol>
+									<li>안전 인증 숙소</li>
+									<li>프랜차이즈 커피전문점 매치</li>
+								</ol>
+							</dd>
+						</a></dl>
+					</div>
+					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
+				</div>
+				<div class="content">		
+					<h3><a href="#">서귀포시&gt;&gt;</a></h3>			
+					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
+					<div>
+						<dl><a href="#">
+							<dt><img src="images/sec6-02-01.png" alt="신라스테이 제주"></dt>
+							<dd>신라스테이 제주</dd>
+							<dd>81,000<small>원~</small></dd>
+							<dd>
+								<ol>
+									<li>제주 최고의 인기 숙소</li>
+									<li>아쿠아월드 워터파크 보유</li>
+								</ol>
+							</dd>
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-02.png" alt="신라스테이 제주"></dt>
+							<dd>메종글래드 제주</dd>
+							<dd>199,000원~</dd>
+							<dd>
+								<ol>
+									<li>제주국제공항과 10분 거리</li>
+									<li>야외 온수풀 포함 풍성한 부대시설</li>
+								</ol>
+							</dd>
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-03.png" alt="신라스테이 제주"></dt>
+							<dd>미르 게스트하우스</dd>
 							<dd>81,000원~</dd>
 							<dd>
 								<ol>
@@ -493,10 +577,55 @@
 									<li>아쿠아월드 워터파크 보유</li>
 								</ol>
 							</dd>
-						</dl>
+						</a></dl>
 					</div>
-					<span class="next">&gt;</span>
-				</div>		
+					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
+				</div>
+				<div class="content">		
+					<h3><a href="#">서귀포시&gt;&gt;</a></h3>			
+					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
+					<div>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-01.png" alt="신라스테이 제주"></dt>
+							<dd>신라스테이 제주</dd>
+							<dd>81,000<small>원~</small></dd>
+							<dd>
+								<ol>
+									<li>제주 최고의 인기 숙소</li>
+									<li>아쿠아월드 워터파크 보유</li>
+								</ol>
+							</dd>
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-02.png" alt="신라스테이 제주"></dt>
+							<dd>메종글래드 제주</dd>
+							<dd>199,000원~</dd>
+							<dd>
+								<ol>
+									<li>제주국제공항과 10분 거리</li>
+									<li>야외 온수풀 포함 풍성한 부대시설</li>
+								</ol>
+							</dd>
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec6-01-03.png" alt="신라스테이 제주"></dt>
+							<dd>미르 게스트하우스</dd>
+							<dd>81,000원~</dd>
+							<dd>
+								<ol>
+									<li>제주 최고의 인기 숙소</li>
+									<li>아쿠아월드 워터파크 보유</li>
+								</ol>
+							</dd>
+						</a></dl>
+					</div>
+					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
+				</div>
+				<div id="move">
+					<p><img src="images/move01.png" alt="별똥별1"></p>
+					<p><img src="images/move01.png" alt="별똥별2"></p>
+					<p><img src="images/move01.png" alt="별똥별3"></p>
+				</div>	
 
 			</section>	
 			<footer id="footer">
