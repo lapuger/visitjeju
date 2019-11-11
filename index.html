@@ -9,7 +9,49 @@
 		<meta name="description" content="사이트소개">
 
 	<!--------------------------script-------------------------->
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>	
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="nice/jquery.nicescroll.min.js"></script>
+		<script type="text/javascript"> //스크롤 디자인 변경
+			$(document).ready(function(){
+				$("body").niceScroll({
+					cursorborder: "",
+					zindex: "99",
+					background: ""					
+				});
+    		/*$("#section3").niceScroll({cursorcolor:"#fff"});*/	
+			});
+		</script>
+
+		<script type="text/javascript"> //이미지 우클릭 금지
+			$(window.document).on("contextmenu", function(){
+				 if(event.target.nodeName == "IMG"){
+				        return false;
+				    }
+				});
+		</script>
+
+		<script type="text/javascript"> //팝업메뉴 마우스오버
+			$(document).ready(function(){		
+				$('.sub_menu').hide();
+				$('#menu-in li').mouseenter(function(){
+					$(this).find('strong').addClass('on');
+					$(this).find('.sub_menu').stop().fadeIn();
+				}).mouseleave(function(){
+					$(this).find('strong').removeClass('on');
+					$(this).find('.sub_menu').stop().fadeOut();
+				})
+			});
+		</script>
+		<script type="text/javascript"> //팝업메뉴창 오픈
+			$(document).ready(function(){
+				$('header p').click(function(){
+					$('#menu').show().animate({left: '0'},'slow');					
+				});
+				$('#menu p').click(function(){
+					$('#menu').animate({left: '-100%'},function(){$(this).hide();});
+				});				
+			});
+		</script>
 
 		<script type="text/javascript"> //스크롤 한 화면단위 마우스 휠이동
        window.onload = function () {
@@ -65,23 +107,6 @@
         }
     </script>
 
-    <!--<script type="text/javascript">
-    	$(document).ready(function () {			
-			function onScroll(event){
-			    var scrollPos = $(document).scrollTop();		    
-			    $('header ul li a').each(function () {
-			        var currLink = $(this);
-			        var refElement = $(currLink.attr("href"));
-			        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-			            $('header ul li a').find('img').attr('src','images/li04.png');
-			            currLink.find('img').attr('src','images/li03.gif');
-			        }
-			        else{
-			            currLink.find('img').attr('src','images/li04.png');
-			        }
-			    });
-			}
-    </script>-->
 
     <script type="text/javascript"> //사이드바 네비 컨트롤   	
     	$(document).ready(function () {
@@ -111,31 +136,36 @@
     </script>
 
     <script type="text/javascript"> //사이드바 모양변화 컨트롤
-    	$(function(){    		
+    	$(function(){
+    		$('header ul li').eq(0).find('img').attr('src','images/li03.gif');
     		$(window).scroll(function(){    
     			var img = $('header ul li').find('img');		
-					if($(document).scrollTop()>970){
+					if($(document).scrollTop()>800){
 						img.attr('src','images/li04.png');
 						$('header ul li').eq(1).find('img').attr('src','images/li03.gif');						
 					}else{
 						img.attr('src','images/li04.png');
 						$('header ul li').eq(0).find('img').attr('src','images/li03.gif');	
 					}
-					if($(document).scrollTop()>1940){
+					if($(document).scrollTop()>1600){
 						$('header ul li').find('img').attr('src','images/li01.png');
 						$('header ul li').eq(2).find('img').attr('src','images/li02.gif');						
 					}
-					if($(document).scrollTop()>2910){
+					if($(document).scrollTop()>2400){
 						$('header ul li').find('img').attr('src','images/li04.png');
 						$('header ul li').eq(3).find('img').attr('src','images/li03.gif');						
 					}
-					if($(document).scrollTop()>3880){
+					if($(document).scrollTop()>3200){
 						$('header ul li').find('img').attr('src','images/li04.png');
 						$('header ul li').eq(4).find('img').attr('src','images/li03.gif');						
 					}
-					if($(document).scrollTop()>4850){
+					if($(document).scrollTop()>4000){
 						$('header ul li').find('img').attr('src','images/li01.png');
 						$('header ul li').eq(5).find('img').attr('src','images/li02.gif');						
+					}
+					if($(document).scrollTop()>4800){
+						$('header ul li').find('img').attr('src','images/li01.png');
+						$('header ul li').eq(6).find('img').attr('src','images/li02.gif');						
 					}
 				});				
     	})
@@ -147,7 +177,7 @@
 		        var showNum = 9;
 		        var num = 0;
 		        var total = $(">dl", list).length;
-		        var liWidth = $("dl:first", list).width()+66;
+		        var liWidth = $("dl:first", list).width()+68;
 		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
 		        list.append(copyObj);
 		        $("#section2 .next").on("click", function(){
@@ -173,9 +203,20 @@
 		    });  
 		</script>
 
+		<script type="text/javascript"> //section4 마우스오버 컬러 트랜지션
+			$(function(){
+				$('#section4 dl').mouseenter(function(){
+					$(this).find('dd').addClass('hover');
+				}).mouseleave(function(){
+					$(this).find('dd').removeClass('hover');	
+				});
+			})
+		</script>
+
 	<!--------------------------link-------------------------->
 		<link rel="icon" type="image/x-icon" href="images/web_logo.png">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="scrollbar/jquery.mCustomScrollbar.css" />
 
 
 	<!--------------------------font-------------------------->
@@ -201,169 +242,267 @@
 	<!--------------------------style-------------------------->
 		<style type="text/css">
 			* {margin:0; padding:0; box-sizing:border-box;}
-			body {font:normal 16px 고양L; color:#000;}
+			body {font:normal 16px 고양L; color:#000; min-width:1900px;}
 			img {vertical-align:top;}
 			a{text-decoration:none; color:#000;}
 			li{list-style:none;}
+			#menu-in strong.on {color:#000;}
 		</style>
 
 	<title>비짓제주 VISIT JEJU - 제주도 공식 관광정보 포털</title>
 </head>
-<body>
-<div id="wrapper">
-	<header>
-		<p><img src="images/menu_icon.gif" alt="메뉴"></p>
-		<ul>
-			<li><a class="active" href="#home"><img src="images/li04.png" alt="아이콘"></a></li>
-			<li><a href="#section2"><img src="images/li04.png" alt="아이콘"></a></li>
-			<li><a href="#section3"><img src="images/li04.png" alt="아이콘"></a></li>
-			<li><a href="#section4"><img src="images/li04.png" alt="아이콘"></a></li>
-			<li><a href="#section5"><img src="images/li04.png" alt="아이콘"></a></li>
-			<li><a href="#footer"><img src="images/li04.png" alt="아이콘"></a></li>
-		</ul>			
-	</header>
-	<div id="menu">
-			
-	</div>
-	<section id="home"><!--section1 main-->
-		<h1>그 계절에</h1> <h1>만난,</h1><h1>제주</h1>
-		<h1 id="logo"><img src="images/main_logo.png" alt="메인페이지 로고"></h1>
-		<p>VISIT JEJU</p>
-		<ul>
-			<li><img src="images/m_wv01.png" alt="파도1"></li>
-			<li><img src="images/m_wv02.png" alt="파도2"></li>
-			<li><img src="images/m_wv03.png" alt="파도3"></li>
-			<li><img src="images/m_wv04.png" alt="파도4"></li>
-		</ul>		
-	</section>
-
-	<section id="section2"><!--section2 제주도 모든 여행지를 한눈에-->
-		<h2>제주도 모든 여행지를 한 눈에</h2>
-		<p>내가 가본 제주는 어디까지일까? 수많은 제주의 아름다운 여행지를 취향에 따라 선택해보자.</p>
-		<span class="prev"><img src="images/prev.png" alt="이전"></span>
-		<div id="list">
-			<div id="list-in">
-				<dl><a href="#">
-					<dt><img src="images/sec2_01.jpg" alt="오설록티뮤지엄"></dt>
-					<dd>오설록티뮤지엄</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_02.jpg" alt="협재해수욕장"></dt>
-					<dd>협재해수욕장</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_03.jpg" alt="사려니숲길"></dt>
-					<dd>사려니숲길</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_04.jpg" alt="성산일출봉"></dt>
-					<dd>성산일출봉</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_05.jpg" alt="카멜리아힐"></dt>
-					<dd>카멜리아힐</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_06.jpg" alt="월정리해변"></dt>
-					<dd>월정리해변</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_07.jpg" alt="산굼부리"></dt>
-					<dd>산굼부리</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_08.jpg" alt="새별오름"></dt>
-					<dd>새별오름</dd>				
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/sec2_09.jpg" alt="비자림"></dt>
-					<dd>비자림</dd>				
-				</a></dl>
+<body>	
+		<div id="wrapper">
+			<header>
+				<p><img src="images/menu_icon.gif" alt="메뉴"></p> <!--팝업메뉴 아이콘-->
+				<ul> <!--사이드 아이콘-->
+					<li><a class="active" href="#home"><img src="images/li04.png" alt="아이콘"></a></li>
+					<li><a href="#section2"><img src="images/li04.png" alt="아이콘"></a></li>
+					<li><a href="#section3"><img src="images/li04.png" alt="아이콘"></a></li>
+					<li><a href="#section4"><img src="images/li04.png" alt="아이콘"></a></li>
+					<li><a href="#section5"><img src="images/li04.png" alt="아이콘"></a></li>
+					<li><a href="#section6"><img src="images/li04.png" alt="아이콘"></a></li>
+					<li><a href="#footer"><img src="images/li04.png" alt="아이콘"></a></li>
+				</ul>			
+			</header>
+			<div id="menu">
+				<p><img src="images/close.jpg" alt="창 끄기"></p> <!--팝업메뉴 닫기 아이콘-->
+				<ul id="menu-in"><!--팝업메뉴 목록-->
+					<li><a href="#"><strong>관광</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">자연</a></li>
+							<li><a href="#">문화관광</a></li>
+							<li><a href="#">테마관광</a></li>
+							<li><a href="#">도보</a></li>
+							<li><a href="#">레저/체험</a></li>
+							<li><a href="#">섬 속의 섬</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>음식</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">향토음식</a></li>
+							<li><a href="#">한식</a></li>
+							<li><a href="#">양식</a></li>
+							<li><a href="#">일식</a></li>
+							<li><a href="#">중식</a></li>
+							<li><a href="#">동남아식</a></li>
+							<li><a href="#">무슬림프렌들리</a></li>
+							<li><a href="#">카페</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>숙박</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">안전인증민박</a></li>
+							<li><a href="#">관광호텔</a></li>
+							<li><a href="#">전통/가족호텔</a></li>
+							<li><a href="#">호스텔/소형호텔</a></li>
+							<li><a href="#">휴양펜션</a></li>
+							<li><a href="#">휴양콘도</a></li>
+							<li><a href="#">일반숙박</a></li>
+							<li><a href="#">생활숙박</a></li>
+							<li><a href="#">농어촌민박</a></li>
+							<li><a href="#">유스호스텔</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>쇼핑</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">특산품</a></li>
+							<li><a href="#">전통시장</a></li>
+							<li><a href="#">상점/상가</a></li>
+							<li><a href="#">면세점</a></li>
+							<li><a href="#">플리마켓</a></li>
+						</ul>				
+					</a></li>
+					<li><a href="#"><strong>정보</strong>
+						<ul class="sub_menu">
+							<li><a href="#">안전 가이드</a></li>
+							<li><a href="#">날씨</a></li>
+							<li><a href="#">교통</a></li>
+							<li><a href="#">의료기관</a></li>
+							<li><a href="#">가이드북</a></li>
+							<li><a href="#">관광문의</a></li>
+							<li><a href="#">무장애 관광</a></li>
+							<li><a href="#">제주의료관광</a></li>
+							<li><a href="#">이벤트</a></li>
+							<li><a href="#">공지</a></li>
+						</ul>					
+					</a></li>
+					<li><a href="#"><strong>제주이야기</strong>
+						<ul class="sub_menu">
+							<li><a href="#">문화/역사</a></li>
+							<li><a href="#">유네스코</a></li>
+							<li><a href="#">영상속제주</a></li>
+							<li><a href="#">제주명품42</a></li>
+							<li><a href="#">우수관광사업체</a></li>
+							<li><a href="#">지오브랜드</a></li>
+							<li><a href="#">템플스테이</a></li>
+							<li><a href="#">제주4·3</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>추천</strong>
+						<ul class="sub_menu">
+							<li><a href="#">일정 추천</a></li>
+							<li><a href="#">여행 큐레이션</a></li>
+							<li><a href="#">테마여행</a></li>
+							<li><a href="#">축제/행사</a></li>
+							<li><a href="#">제주문화공연</a></li>
+							<li><a href="#">알쓸신제 원정대</a></li>
+						</ul>				
+					</a></li>
+				</ul>
+				<ul id="lnb">
+					<li><a href="#"><img src="images/web_logo.png" alt="홈화면"></a></li>
+					<li><a href="#"><img src="images/login.png" alt="로그인"></a></li>
+					<li><a href="#"><img src="images/sitemap.png" alt="사이트맵"></a></li>
+					<li><a href="#"><img src="images/language.png" alt="언어 설정"></a></li>
+				</ul>		
 			</div>
+
+			<section id="home"><!--section1 main-->
+				<h1>그 계절에</h1> <h1>만난,</h1><h1>제주</h1>
+				<h1 id="logo"><img src="images/main_logo.png" alt="메인페이지 로고"></h1>
+				<p>VISIT JEJU</p>
+				<ul>
+					<li><img src="images/m_wv01.png" alt="파도1"></li>
+					<li><img src="images/m_wv02.png" alt="파도2"></li>
+					<li><img src="images/m_wv03.png" alt="파도3"></li>
+					<li><img src="images/m_wv04.png" alt="파도4"></li>
+				</ul>		
+			</section>
+
+			<section id="section2"><!--section2 제주도 모든 여행지를 한눈에-->
+				<h2>제주도 모든 여행지를 한 눈에</h2>
+				<p>내가 가본 제주는 어디까지일까? 수많은 제주의 아름다운 여행지를 취향에 따라 선택해보자.</p>
+				<span class="prev"><img src="images/prev.png" alt="이전"></span>
+				<div id="list">
+					<div id="list-in">
+						<dl><a href="#">
+							<dt><img src="images/sec2_01.jpg" alt="오설록티뮤지엄"></dt>
+							<dd>오설록티뮤지엄</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_02.jpg" alt="협재해수욕장"></dt>
+							<dd>협재해수욕장</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_03.jpg" alt="사려니숲길"></dt>
+							<dd>사려니숲길</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_04.jpg" alt="성산일출봉"></dt>
+							<dd>성산일출봉</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_05.jpg" alt="카멜리아힐"></dt>
+							<dd>카멜리아힐</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_06.jpg" alt="월정리해변"></dt>
+							<dd>월정리해변</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_07.jpg" alt="산굼부리"></dt>
+							<dd>산굼부리</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_08.jpg" alt="새별오름"></dt>
+							<dd>새별오름</dd>				
+						</a></dl>
+						<dl><a href="#">
+							<dt><img src="images/sec2_09.jpg" alt="비자림"></dt>
+							<dd>비자림</dd>				
+						</a></dl>
+					</div>
+				</div>
+				<span class="next"><img src="images/next.png" alt="다음"></span>
+				<ul class="upper-wave">
+					<li><img src="images/sec3_u_wave01.png" alt="파도1"></li>
+					<li><img src="images/sec3_u_wave02.png" alt="파도2"></li>
+					<li><img src="images/sec3_u_wave03.png" alt="파도3"></li>
+				</ul>
+			</section>
+
+			<section id="section3"><!--section3 제주도 먹거리 지도-->
+				<img src="images/section3.jpg" alt="section3">
+				<ul class="lower-wave">
+					<li><img src="images/sec3_l_wave01.png" alt="파도1"></li>
+					<li><img src="images/sec3_l_wave02.png" alt="파도2"></li>
+					<li><img src="images/sec3_l_wave03.png" alt="파도3"></li>
+				</ul>
+				<hr/>
+			</section>
+
+			<section id="section4"><!--section4 4계절 제주로 떠나보세요-->
+				<hr/>
+				<ul class="lower-wave">
+					<li><img src="images/sec3_l_wave01.png" alt="파도1"></li>
+					<li><img src="images/sec3_l_wave02.png" alt="파도2"></li>
+					<li><img src="images/sec3_l_wave03.png" alt="파도3"></li>
+				</ul>
+				<h2>4계절, 제주로 떠나보세요.</h2>	
+				<div>
+					<dl><a href="#">
+						<dt><img src="images/sec4_01.jpg" alt="봄"></dt>
+						<dd>봄,</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/sec4_02.jpg" alt="여름"></dt>
+						<dd>여름,</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/sec4_03.jpg" alt="가을"></dt>
+						<dd>가을,</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/sec4_04.jpg" alt="겨울"></dt>
+						<dd>겨울,</dd>
+					</a></dl>
+				</div>	
+				<p>그 계절에 만난, 제주.</p>
+			</section>
+
+			<section id="section5"><!--section5 다양한 제주 숙소-->
+				<h2>호텔부터 민박까지</h2>
+				<p>다양한 종류의 숙소</p>
+				<p><img src="images/continue.gif" alt="스크롤 다운"></p>
+				<ul>
+					<li>&nbsp;</li>
+					<li><img src="images/sec5_sunset01.png" alt="노을1"></li>
+					<li><img src="images/sec5_sunset02.png" alt="노을2"></li>
+					<li><img src="images/sec5_sunset03.png" alt="노을3"></li>
+					<li><img src="images/sec5_sunset04.png" alt="하늘"></li>
+				</ul>
+			</section>
+
+			<section id="section6"><!--section6 다양한 제주 숙소-->
+				<div>
+					<h3><a href="#">제주공항 주변&gt;&gt;</a></h3>
+					<span class="prev">&lt;</span>
+					<div>
+						<dl>
+							<dt><img src="" alt="신라스테이 제주"></dt>
+							<dd>신라스테이 제주</dd>
+							<dd>81,000원~</dd>
+							<dd>
+								<ol>
+									<li>제주 최고의 인기 숙소</li>
+									<li>아쿠아월드 워터파크 보유</li>
+								</ol>
+							</dd>
+						</dl>
+					</div>
+					<span class="next">&gt;</span>
+				</div>		
+
+			</section>	
+			<footer id="footer">
+				<img src="images/footer.jpg" alt="footer">
+			</footer>	
 		</div>
-		<span class="next"><img src="images/next.png" alt="다음"></span>
-		<ul class="upper-wave">
-			<li><img src="images/sec3_u_wave01.png" alt="파도1"></li>
-			<li><img src="images/sec3_u_wave02.png" alt="파도2"></li>
-			<li><img src="images/sec3_u_wave03.png" alt="파도3"></li>
-		</ul>
-	</section>
-
-	<section id="section3"><!--section3 제주도 먹거리 지도-->
-		<img src="images/section3.jpg" alt="section3">
-		<ul class="lower-wave">
-			<li><img src="images/sec3_l_wave01.png" alt="파도1"></li>
-			<li><img src="images/sec3_l_wave02.png" alt="파도2"></li>
-			<li><img src="images/sec3_l_wave03.png" alt="파도3"></li>
-		</ul>
-	</section>
-
-	<section id="section4"><!--section4 4계절 제주로 떠나보세요-->
-		<hr/>
-		<ul class="lower-wave">
-			<li><img src="images/sec3_l_wave01.png" alt="파도1"></li>
-			<li><img src="images/sec3_l_wave02.png" alt="파도2"></li>
-			<li><img src="images/sec3_l_wave03.png" alt="파도3"></li>
-		</ul>
-		<h2>4계절, 제주로 떠나보세요.</h2>	
-		<div>
-			<dl><a href="#">
-				<dt><img src="images/sec4_01.jpg" alt="봄"></dt>
-				<dd>봄,</dd>
-			</a></dl>
-			<dl><a href="#">
-				<dt><img src="images/sec4_02.jpg" alt="여름"></dt>
-				<dd>여름,</dd>
-			</a></dl>
-			<dl><a href="#">
-				<dt><img src="images/sec4_03.jpg" alt="가을"></dt>
-				<dd>가을,</dd>
-			</a></dl>
-			<dl><a href="#">
-				<dt><img src="images/sec4_04.jpg" alt="겨울"></dt>
-				<dd>겨울,</dd>
-			</a></dl>
-		</div>	
-		<p>그 계절에 만난, 제주.</p>
-	</section>
-
-	<section id="section5"><!--section5 다양한 제주 숙소-->
-		<h2>호텔부터 민박까지</h2>
-		<p>다양한 종류의 숙소</p>
-		<p><img src="" alt="스크롤 다운"></p>
-		<ul>
-			<li><img src="" alt="태양"></li>
-			<li><img src="" alt="노을1"></li>
-			<li><img src="" alt="노을2"></li>
-			<li><img src="" alt="노을3"></li>
-			<li><img src="" alt="하늘"></li>
-		</ul>
-	</section>
-
-	<section id="section6"><!--section5 다양한 제주 숙소-->
-		<div>
-			<h3><a href="#">제주공항 주변&gt;&gt;</a></h3>
-			<span class="prev">&lt;</span>
-			<div>
-				<dl>
-					<dt><img src="" alt="신라스테이 제주"></dt>
-					<dd>신라스테이 제주</dd>
-					<dd>81,000원~</dd>
-					<dd>
-						<ol>
-							<li>제주 최고의 인기 숙소</li>
-							<li>아쿠아월드 워터파크 보유</li>
-						</ol>
-					</dd>
-				</dl>
-			</div>
-			<span class="next">&gt;</span>
-		</div>		
-
-	</section>	
-	<footer id="footer">
-		<img src="images/footer.jpg" alt="footer">
-	</footer>	
-</div>	
+	</div>	
 </body>
 </html>
