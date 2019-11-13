@@ -207,9 +207,9 @@
 		<script type="text/javascript"> //section4 마우스오버 컬러 트랜지션
 			$(function(){
 				$('#section4 dl').mouseenter(function(){
-					$(this).find('dd').addClass('hover');
+					$(this).find('dd a').addClass('hover');
 				}).mouseleave(function(){
-					$(this).find('dd').removeClass('hover');	
+					$(this).find('dd a').removeClass('hover');	
 				});
 			})
 		</script>
@@ -337,7 +337,6 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css">
 		<link rel="stylesheet" href="scrollbar/jquery.mCustomScrollbar.css" />
 
-
 	<!--------------------------font-------------------------->
 		<style>
 			@font-face {
@@ -387,7 +386,7 @@
 			<div id="menu">
 				<p><img src="images/close.jpg" alt="창 끄기"></p> <!--팝업메뉴 닫기 아이콘-->
 				<ul id="menu-in"><!--팝업메뉴 목록-->
-					<li><a href="sub01.html"><strong>관광</strong>
+					<li><a href="sub01.html"><strong>관광</strong></a>
 						<ul class="sub_menu">
 							<li><a href="sub01.html">전체</a></li>
 							<li><a href="#">자연</a></li>
@@ -397,8 +396,8 @@
 							<li><a href="#">레저/체험</a></li>
 							<li><a href="#">섬 속의 섬</a></li>
 						</ul>
-					</a></li>
-					<li><a href="#"><strong>음식</strong>
+					</li>
+					<li><a href="#"><strong>음식</strong></a>
 						<ul class="sub_menu">
 							<li><a href="#">전체</a></li>
 							<li><a href="#">향토음식</a></li>
@@ -410,8 +409,8 @@
 							<li><a href="#">무슬림프렌들리</a></li>
 							<li><a href="#">카페</a></li>
 						</ul>
-					</a></li>
-					<li><a href="#"><strong>숙박</strong>
+					</li>
+					<li><a href="#"><strong>숙박</strong></a>
 						<ul class="sub_menu">
 							<li><a href="#">전체</a></li>
 							<li><a href="#">안전인증민박</a></li>
@@ -425,8 +424,8 @@
 							<li><a href="#">농어촌민박</a></li>
 							<li><a href="#">유스호스텔</a></li>
 						</ul>
-					</a></li>
-					<li><a href="#"><strong>쇼핑</strong>
+					</li>
+					<li><a href="#"><strong>쇼핑</strong></a>
 						<ul class="sub_menu">
 							<li><a href="#">전체</a></li>
 							<li><a href="#">특산품</a></li>
@@ -435,8 +434,8 @@
 							<li><a href="#">면세점</a></li>
 							<li><a href="#">플리마켓</a></li>
 						</ul>				
-					</a></li>
-					<li><a href="#"><strong>정보</strong>
+					</li>
+					<li><a href="#"><strong>정보</strong></a>
 						<ul class="sub_menu">
 							<li><a href="#">안전 가이드</a></li>
 							<li><a href="#">날씨</a></li>
@@ -449,8 +448,8 @@
 							<li><a href="#">이벤트</a></li>
 							<li><a href="#">공지</a></li>
 						</ul>					
-					</a></li>
-					<li><a href="#"><strong>제주이야기</strong>
+					</li>
+					<li><a href="#"><strong>제주이야기</strong></a>
 						<ul class="sub_menu">
 							<li><a href="#">문화/역사</a></li>
 							<li><a href="#">유네스코</a></li>
@@ -461,8 +460,8 @@
 							<li><a href="#">템플스테이</a></li>
 							<li><a href="#">제주4·3</a></li>
 						</ul>
-					</a></li>
-					<li><a href="#"><strong>추천</strong>
+					</li>
+					<li><a href="#"><strong>추천</strong></a>
 						<ul class="sub_menu">
 							<li><a href="#">일정 추천</a></li>
 							<li><a href="#">여행 큐레이션</a></li>
@@ -471,7 +470,7 @@
 							<li><a href="#">제주문화공연</a></li>
 							<li><a href="#">알쓸신제 원정대</a></li>
 						</ul>				
-					</a></li>
+					</li>
 				</ul>
 				<ul id="lnb">
 					<li><a href="index.html" title="홈화면"><img src="images/web_logo.png" alt="홈화면"></a></li>
@@ -499,42 +498,42 @@
 				<span class="prev"><img src="images/prev.png" alt="이전"></span>
 				<div id="list">
 					<div id="list-in">
-						<dl><a href="#">
-							<dt><img src="images/sec2_01.jpg" alt="오설록티뮤지엄"></dt>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_01.jpg" alt="오설록티뮤지엄"></a></dt>
 							<dd>오설록티뮤지엄</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_02.jpg" alt="협재해수욕장"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_02.jpg" alt="협재해수욕장"></a></dt>
 							<dd>협재해수욕장</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_03.jpg" alt="사려니숲길"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_03.jpg" alt="사려니숲길"></a></dt>
 							<dd>사려니숲길</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_04.jpg" alt="성산일출봉"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_04.jpg" alt="성산일출봉"></a></dt>
 							<dd>성산일출봉</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_05.jpg" alt="카멜리아힐"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_05.jpg" alt="카멜리아힐"></a></dt>
 							<dd>카멜리아힐</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_06.jpg" alt="월정리해변"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_06.jpg" alt="월정리해변"></a></dt>
 							<dd>월정리해변</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_07.jpg" alt="산굼부리"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_07.jpg" alt="산굼부리"></a></dt>
 							<dd>산굼부리</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_08.jpg" alt="새별오름"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_08.jpg" alt="새별오름"></a></dt>
 							<dd>새별오름</dd>				
-						</a></dl>
-						<dl><a href="#">
-							<dt><img src="images/sec2_09.jpg" alt="비자림"></dt>
+						</dl>
+						<dl>
+							<dt><a href="#"><img src="images/sec2_09.jpg" alt="비자림"></a></dt>
 							<dd>비자림</dd>				
-						</a></dl>
+						</dl>
 					</div>
 				</div>
 				<span class="next"><img src="images/next.png" alt="다음"></span>
@@ -564,22 +563,22 @@
 				</ul>
 				<h2>4계절, 제주로 떠나보세요.</h2>	
 				<div>
-					<dl><a href="#">
-						<dt><img src="images/sec4_01.jpg" alt="봄"></dt>
-						<dd>봄,</dd>
-					</a></dl>
-					<dl><a href="#">
-						<dt><img src="images/sec4_02.jpg" alt="여름"></dt>
-						<dd>여름,</dd>
-					</a></dl>
-					<dl><a href="#">
-						<dt><img src="images/sec4_03.jpg" alt="가을"></dt>
-						<dd>가을,</dd>
-					</a></dl>
-					<dl><a href="#">
-						<dt><img src="images/sec4_04.jpg" alt="겨울"></dt>
-						<dd>겨울,</dd>
-					</a></dl>
+					<dl>
+						<dt><a href="#"><img src="images/sec4_01.jpg" alt="봄"></a></dt>
+						<dd><a href="#">봄,</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/sec4_02.jpg" alt="여름"></a></dt>
+						<dd><a href="#">여름,</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/sec4_03.jpg" alt="가을"></a></dt>
+						<dd><a href="#">가을,</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="#"><img src="images/sec4_04.jpg" alt="겨울"></a></dt>
+						<dd><a href="#">겨울,</a></dd>
+					</dl>
 				</div>	
 				<p>그 계절에 만난, 제주.</p>
 			</section>
@@ -603,8 +602,8 @@
 					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
 					<div class="roomlist">
 						<div class="roomlist-in">
-							<dl><a href="#">
-								<dt><img src="images/sec6-01-01.png" alt="신라스테이 제주"></dt>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-01-01.png" alt="신라스테이 제주"></a></dt>
 								<dd>신라스테이 제주</dd>
 								<dd>81,000<small>원~</small></dd>
 								<dd>
@@ -613,9 +612,9 @@
 										<li>아쿠아월드 워터파크 보유</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-01-02.png" alt="메종글래드 제주"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-01-02.png" alt="메종글래드 제주"></a></dt>
 								<dd>메종글래드 제주</dd>
 								<dd>199,000<small>원~</small></dd>
 								<dd>
@@ -624,9 +623,9 @@
 										<li>야외 온수풀 포함 풍성한 부대시설</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-01-03.png" alt="미르 게스트하우스"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-01-03.png" alt="미르 게스트하우스"></a></dt>
 								<dd>미르 게스트하우스</dd>
 								<dd>81,000<small>원~</small></dd>
 								<dd>
@@ -635,9 +634,9 @@
 										<li>프랜차이즈 커피전문점 매치</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-01-04.png" alt="제주bp게스트하우스"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-01-04.png" alt="제주bp게스트하우스"></a></dt>
 								<dd>제주bp게스트하우스</dd>
 								<dd>81,000<small>원~</small></dd>
 								<dd>
@@ -646,7 +645,7 @@
 										<li>근처 바오젠 거리, 민오름 등이 위치</li>
 									</ol>
 								</dd>
-							</a></dl>
+							</dl>
 						</div>
 					</div>
 					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
@@ -656,8 +655,8 @@
 					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
 					<div class="roomlist">
 						<div class="roomlist-in">
-							<dl><a href="#">
-								<dt><img src="images/sec6-02-01.png" alt="히든클리프 호텔 앤 네이쳐"></dt>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-02-01.png" alt="히든클리프 호텔 앤 네이쳐"></a></dt>
 								<dd>히든클리프 호텔 앤 네이쳐</dd>
 								<dd>170,000<small>원~</small></dd>
 								<dd>
@@ -666,9 +665,9 @@
 										<li>국내 최장 47미터 인피니티 풀 보유</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-02-02.png" alt="서귀포 KAL호텔"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-02-02.png" alt="서귀포 KAL호텔"></a></dt>
 								<dd>서귀포 KAL호텔</dd>
 								<dd>199,000<small>원~</small></dd>
 								<dd>
@@ -677,9 +676,9 @@
 										<li>승용차 10분거리 매일올레시장</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-02-03.png" alt="나날 게스트하우스"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-02-03.png" alt="나날 게스트하우스"></a></dt>
 								<dd>나날 게스트하우스</dd>
 								<dd>15,000<small>원~</small></dd>
 								<dd>
@@ -688,9 +687,9 @@
 										<li>아쿠아월드 워터파크 보유</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-02-04.png" alt="범섬풍경펜션"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-02-04.png" alt="범섬풍경펜션"></a></dt>
 								<dd>범섬풍경펜션</dd>
 								<dd>45,000<small>원~</small></dd>
 								<dd>
@@ -699,7 +698,7 @@
 										<li>1층 카페 조식 무료 제공</li>
 									</ol>
 								</dd>
-							</a></dl>
+							</dl>
 						</div>
 					</div>
 					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
@@ -709,8 +708,8 @@
 					<span class="prev"><img src="images/sec6-prev.png" alt="이전"></span>
 					<div class="roomlist">
 						<div class="roomlist-in">
-							<dl><a href="#">
-								<dt><img src="images/sec6-03-01.png" alt="휘닉스 제주 섭지코지"></dt>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-03-01.png" alt="휘닉스 제주 섭지코지"></a></dt>
 								<dd>휘닉스 제주 섭지코지</dd>
 								<dd>135,000<small>원~</small></dd>
 								<dd>
@@ -719,9 +718,9 @@
 										<li>무료 공항서틀 운행</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-03-02.png" alt="빠담빠담 게스트하우스"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-03-02.png" alt="빠담빠담 게스트하우스"></a></dt>
 								<dd>빠담빠담 게스트하우스</dd>
 								<dd>20,000<small>원~</small></dd>
 								<dd>
@@ -730,9 +729,9 @@
 										<li>감귤 농장에서 무료 감귤따기 체험</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-03-03.png" alt="꽃하루방게스트하우스"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-03-03.png" alt="꽃하루방게스트하우스"></a></dt>
 								<dd>꽃하루방게스트하우스</dd>
 								<dd>50,000<small>원~</small></dd>
 								<dd>
@@ -741,9 +740,9 @@
 										<li>섭지코지/성산일출봉/우도 인근</li>
 									</ol>
 								</dd>
-							</a></dl>
-							<dl><a href="#">
-								<dt><img src="images/sec6-03-04.png" alt="메종드오조락"></dt>
+							</dl>
+							<dl>
+								<dt><a href="#"><img src="images/sec6-03-04.png" alt="메종드오조락"></a></dt>
 								<dd>메종드오조락</dd>
 								<dd>40,000<small>원~</small></dd>
 								<dd>
@@ -752,7 +751,7 @@
 										<li>카페서 무료 조식 이용 가능</li>
 									</ol>
 								</dd>
-							</a></dl>
+							</dl>
 						</div>
 					</div>
 					<span class="next"><img src="images/sec6-next.png" alt="다음"></span>
@@ -766,30 +765,30 @@
 
 			<footer id="footer">
 			<div id="fnb">
-				<dl><a href="#">
-					<dt><img src="images/fnb01.png" alt="장애인 관광정보"></dt>
+				<dl>
+					<dt><a href="#"><img src="images/fnb01.png" alt="장애인 관광정보"></a></dt>
 					<dd>장애인 관광정보</dd>
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/fnb02.png" alt="안내 책자"></dt>
+				</dl>
+				<dl>
+					<dt><a href="#"><img src="images/fnb02.png" alt="안내 책자"></a></dt>
 					<dd>안내책자</dd>
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/fnb03.png" alt="제주 관광지도"></dt>
+				</dl>
+				<dl>
+					<dt><a href="#"><img src="images/fnb03.png" alt="제주 관광지도"></a></dt>
 					<dd>제주 관광지도</dd>
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/fnb04.png" alt="제주 관광정보센터"></dt>
+				</dl>
+				<dl>
+					<dt><a href="#"><img src="images/fnb04.png" alt="제주 관광정보센터"></a></dt>
 					<dd>제주관광정보센터</dd>
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/fnb05.png" alt="관광업체등록신청"></dt>
+				</dl>
+				<dl>
+					<dt><a href="#"><img src="images/fnb05.png" alt="관광업체등록신청"></a></dt>
 					<dd>관광업체등록신청</dd>
-				</a></dl>
-				<dl><a href="#">
-					<dt><img src="images/fnb06.png" alt="포토 제주"></dt>
+				</dl>
+				<dl>
+					<dt><a href="#"><img src="images/fnb06.png" alt="포토 제주"></a></dt>
 					<dd>포토제주</dd>
-				</a></dl>
+				</dl>
 			</div>
 			<div>
 				<ul id="app">

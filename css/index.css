@@ -1,4 +1,4 @@
-@charset "UTF-8"
+
 
 html,body {
 	width:100%;
@@ -268,7 +268,7 @@ header {
 		height:100%;
 		border-radius:100%;
 	}
-	#section2 #list-in a dd {
+	#section2 #list-in dd {
 		color:#fff;
 		font:normal 1.2em 경기B;
 		margin-top:-2.2em;
@@ -420,7 +420,7 @@ header {
 		width:100%;
 		padding:0 6%;
 	}
-	#section4 dl a dd {	
+	#section4 dl dd a {	
 		font-family:경기B;
 		font-size:1.7em;	
 		width:60%;
@@ -430,42 +430,42 @@ header {
 		top:5%;
 		left:50%; margin-left:-3.5em;
 	}
-	#section4 dl:nth-of-type(1) a dd {
+	#section4 dl:nth-of-type(1) dd a {
 		color:#f8d92c;
 		border:1px solid #f8d92c;
 		transition:1s;
 	}
-	#section4 dl:nth-of-type(1) a dd.hover {	
+	#section4 dl:nth-of-type(1) dd a.hover {	
 		color:#fff;
 		border:1px solid #fff;
 		background-color:#fbbd15;
 	}
-	#section4 dl:nth-of-type(2) a dd {
+	#section4 dl:nth-of-type(2) dd a {
 		color:#b9f9ff;
 		border:1px solid #b9f9ff;
 		transition:1s;
 	}
-	#section4 dl:nth-of-type(2) a dd.hover {	
+	#section4 dl:nth-of-type(2) dd a.hover {	
 		color:#fff;
 		border:1px solid #fff;
 		background-color:#2278c6;
 	}
-	#section4 dl:nth-of-type(3)  a dd {
+	#section4 dl:nth-of-type(3) dd a {
 		color:#ff771c;
 		border:1px solid #ff771c;
 		transition:1s;
 	}
-	#section4 dl:nth-of-type(3) a dd.hover {	
+	#section4 dl:nth-of-type(3) dd a.hover {	
 		color:#fff;
 		border:1px solid #fff;
 		background-color:#ff771c;
 	}
-	#section4 dl:nth-of-type(4)  a dd {
+	#section4 dl:nth-of-type(4) dd a {
 		color:#fff;
 		border:1px solid #fff;
 		transition:1s;
 	}
-	#section4 dl:nth-of-type(4) a dd.hover {	
+	#section4 dl:nth-of-type(4) dd a.hover {	
 		color:#151f49;
 		border:1px solid transparent;
 		background-color:#fff;
