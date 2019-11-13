@@ -1,0 +1,967 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<!--------------------------meta-------------------------->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keword" content="검색어">
+		<meta name="description" content="사이트소개">
+
+	<!--------------------------script-------------------------->
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript"> //꽃잎 날리는 효과
+		$(window).load(function () {
+		    $('body').sakura();
+		});
+		</script>
+
+		<script src="nice/jquery.nicescroll.min.js"></script>		
+		<script type="text/javascript"> //스크롤 디자인 변경
+			$(document).ready(function(){
+				$("body").niceScroll({
+					cursorborder: "",
+					zindex: "99",
+					background: "",
+					cursorcolor:"#f15a24"	
+				});	
+			});
+		</script>		
+
+		<script type="text/javascript"> //이미지 우클릭 금지
+			$(window.document).on("contextmenu", function(){
+				 if(event.target.nodeName == "IMG"){
+				        return false;
+				    }
+				});
+		</script>
+
+		<script type="text/javascript"> //팝업메뉴 마우스오버
+			$(document).ready(function(){		
+				$('.sub_menu').hide();
+				$('#menu-in li').mouseenter(function(){
+					$(this).find('strong').addClass('on');
+					$(this).find('.sub_menu').stop().fadeIn();
+				}).mouseleave(function(){
+					$(this).find('strong').removeClass('on');
+					$(this).find('.sub_menu').stop().fadeOut();
+				})
+			});
+		</script>
+		<script type="text/javascript"> //팝업메뉴창 오픈
+			$(document).ready(function(){
+				$('header p').click(function(){
+					$('#menu').show().animate({left: '0'},'slow');					
+				});
+				$('#menu p').click(function(){
+					$('#menu').animate({left: '-100%'},function(){$(this).hide();});
+				});				
+			});
+		</script>
+
+		<script type="text/javascript"> //content section 카드에 백그라운드 이미지 순서대로 삽입
+			$(function(){
+				var n = 1;
+				var imgurl = 'images/sub01-section01-card'
+				while(n<9999){							
+					$('#card'+n).css('background-image','url('+imgurl+n+'.jpg)');
+					n = n+1;
+				}			
+			})
+		</script>
+
+		<script type="text/javascript"> //content section 페이지 누르면 섹션 넘기기
+			$(function(){
+				$('section').hide();
+				$('section').first().show();
+				$('#pagebar li').first().addClass('on');
+				$('#pagebar li').click(function(){
+					$("html, body").animate({ scrollTop: 1400 }, 600);
+					$('section').hide();
+					$('#pagebar li').removeClass('on');
+					$(this).addClass('on');
+					$('section').eq($(this).index()).show();
+				});
+				/*
+				$('#prev').click(function(){
+					var prev = $('#pagebar li').index();
+					$('section').hide();
+					$("html, body").animate({ scrollTop: 1400 }, 600);
+					$('section').eq(prev).show();
+					$('#pagebar li').removeClass('on');
+					$('#pagebar li').eq(prev).addClass('on');
+				});
+				$('#next').click(function(){
+					var next = $('#pagebar li').index()+1;
+					$('section').hide();
+					$("html, body").animate({ scrollTop: 1400 }, 600);
+					$('section').eq(next).show();
+					$('#pagebar li').removeClass('on');
+					$('#pagebar li').eq(next).addClass('on');
+				});
+				*/
+			})
+		</script>
+
+		<script type="text/javascript"> //section6 슬라이드 제주공항주변
+	   		$(document).ready(function(){ 
+		        var list = $("#section6 #content1 .roomlist-in");
+		        var showNum = 3;
+		        var num = 0;
+		        var total = $(">dl", list).length;
+		        var liWidth = $("dl:first", list).width()+60;
+		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
+		        list.append(copyObj);
+		        $("#section6 #content1 .next").on("click", function(){
+		            if(num == total){ 
+		                num = 0; 
+		                list.css("margin-left",num); 
+		            }
+		            num++; 
+		            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		            return false;
+		        });
+		        
+		        
+		        $("#section6 #content1 .prev").on("click", function(){
+		          if(num == 0){    
+		              num = total; 
+		              list.css("margin-left", -num*liWidth+"px");
+		          }
+		          num--;
+		          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
+		          return false;
+		        });
+		    });  
+		</script>
+
+		
+
+
+
+	<!--------------------------link-------------------------->
+		<link rel="icon" type="image/x-icon" href="images/web_logo.png">
+		<link rel="stylesheet" type="text/css" href="css/sub01.css">
+		<link rel="stylesheet" href="scrollbar/jquery.mCustomScrollbar.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-sakura.css">
+		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
+
+
+	<!--------------------------font-------------------------->
+		<style>
+			@font-face {
+			  font-family: 고양L;
+			  src: url(font/GoyangIlsan_L.woff);
+			}
+			@font-face {
+			  font-family: 고양R;
+			  src: url(font/GoyangIlsan_R.woff);
+			}
+			@font-face {
+			  font-family: 경기R;
+			  src: url(font/GyeonggiBatangR.woff);
+			}
+			@font-face {
+			  font-family: 경기B;
+			  src: url(font/GyeonggiBatangB.woff);
+			}
+		</style>
+
+	<!--------------------------style-------------------------->
+		<style type="text/css">
+			* {margin:0; padding:0; box-sizing:border-box;}
+			body {font:normal 16px 고양L; color:#000; min-width:1900px;}
+			img {vertical-align:top;}
+			a{text-decoration:none; color:#000;}
+			li{list-style:none;}
+			#pagebar li.on {background-color:#f15a24; color:#fff;}
+		</style>
+
+	<title>관광 - 비짓제주 VISIT JEJU</title>
+</head>
+<body>
+		<div id="wrapper">
+			<header>
+				<p><img src="images/menu_icon.gif" alt="메뉴"></p> <!--팝업메뉴 아이콘-->		
+			</header>
+			<div id="menu">
+				<p><img src="images/close.jpg" alt="창 끄기"></p> <!--팝업메뉴 닫기 아이콘-->
+				<ul id="menu-in"><!--팝업메뉴 목록-->
+					<li><a href="sub01.html"><strong>관광</strong>
+						<ul class="sub_menu">
+							<li><a href="sub01.html">전체</a></li>
+							<li><a href="#">자연</a></li>
+							<li><a href="#">문화관광</a></li>
+							<li><a href="#">테마관광</a></li>
+							<li><a href="#">도보</a></li>
+							<li><a href="#">레저/체험</a></li>
+							<li><a href="#">섬 속의 섬</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>음식</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">향토음식</a></li>
+							<li><a href="#">한식</a></li>
+							<li><a href="#">양식</a></li>
+							<li><a href="#">일식</a></li>
+							<li><a href="#">중식</a></li>
+							<li><a href="#">동남아식</a></li>
+							<li><a href="#">무슬림프렌들리</a></li>
+							<li><a href="#">카페</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>숙박</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">안전인증민박</a></li>
+							<li><a href="#">관광호텔</a></li>
+							<li><a href="#">전통/가족호텔</a></li>
+							<li><a href="#">호스텔/소형호텔</a></li>
+							<li><a href="#">휴양펜션</a></li>
+							<li><a href="#">휴양콘도</a></li>
+							<li><a href="#">일반숙박</a></li>
+							<li><a href="#">생활숙박</a></li>
+							<li><a href="#">농어촌민박</a></li>
+							<li><a href="#">유스호스텔</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>쇼핑</strong>
+						<ul class="sub_menu">
+							<li><a href="#">전체</a></li>
+							<li><a href="#">특산품</a></li>
+							<li><a href="#">전통시장</a></li>
+							<li><a href="#">상점/상가</a></li>
+							<li><a href="#">면세점</a></li>
+							<li><a href="#">플리마켓</a></li>
+						</ul>				
+					</a></li>
+					<li><a href="#"><strong>정보</strong>
+						<ul class="sub_menu">
+							<li><a href="#">안전 가이드</a></li>
+							<li><a href="#">날씨</a></li>
+							<li><a href="#">교통</a></li>
+							<li><a href="#">의료기관</a></li>
+							<li><a href="#">가이드북</a></li>
+							<li><a href="#">관광문의</a></li>
+							<li><a href="#">무장애 관광</a></li>
+							<li><a href="#">제주의료관광</a></li>
+							<li><a href="#">이벤트</a></li>
+							<li><a href="#">공지</a></li>
+						</ul>					
+					</a></li>
+					<li><a href="#"><strong>제주이야기</strong>
+						<ul class="sub_menu">
+							<li><a href="#">문화/역사</a></li>
+							<li><a href="#">유네스코</a></li>
+							<li><a href="#">영상속제주</a></li>
+							<li><a href="#">제주명품42</a></li>
+							<li><a href="#">우수관광사업체</a></li>
+							<li><a href="#">지오브랜드</a></li>
+							<li><a href="#">템플스테이</a></li>
+							<li><a href="#">제주4·3</a></li>
+						</ul>
+					</a></li>
+					<li><a href="#"><strong>추천</strong>
+						<ul class="sub_menu">
+							<li><a href="#">일정 추천</a></li>
+							<li><a href="#">여행 큐레이션</a></li>
+							<li><a href="#">테마여행</a></li>
+							<li><a href="#">축제/행사</a></li>
+							<li><a href="#">제주문화공연</a></li>
+							<li><a href="#">알쓸신제 원정대</a></li>
+						</ul>				
+					</a></li>
+				</ul>
+				<ul id="lnb">
+					<li><a href="index.html" title="홈화면"><img src="images/web_logo.png" alt="홈화면"></a></li>
+					<li><a href="#" title="로그인"><img src="images/login.png" alt="로그인"></a></li>
+					<li><a href="#" title="사이트맵"><img src="images/sitemap.png" alt="사이트맵"></a></li>
+					<li><a href="#" title="언어"><img src="images/language.png" alt="언어 설정"></a></li>
+				</ul>		
+			</div>
+
+			<div id="home"><!--관광 전체 main-->
+				<script src="js/jquery-sakura.js"></script>
+				<p><img src="images/sub01-title-line.jpg" alt="제목 선"></p>
+				<h2>
+					산, 바다, 숲<br/>
+					어느 것 하나 부족함 없는 제주의 자연
+				</h2>
+				<h3><img src="images/sub01-main-logo.png" alt="관광-전체"></h3>
+				<p>
+					우리나라에서 가장 높은 한라산의 풍경은 사계절 내내 단연 으뜸이다.<br />
+					섬 속의 섬으로 떠나보는건 어떨까. 우도, 마라도, 비양도, 추자도 등 섬에서 바라보는 제주도의 풍경 또한 비경일 것이다.<br />
+					그리고 사려니 숲을 비롯하여 우거진 숲이 훌륭하여 가족, 친구들과 함께 멋진 여행을 계획해 보아도 좋을 것이다.
+				</p>
+				<p><img src="images/continue.gif" alt="스크롤다운"></p>
+			</div>
+
+			<div class="header">
+				<ul id="list">
+					<li title="전체"><a href="#"><img src="images/sub01-list-on.png" alt="전체"></a></li>
+					<li title="자연"><a href="#"><img src="images/sub01-list-off.png" alt="자연"></a></li>
+					<li title="문화관광"><a href="#"><img src="images/sub01-list-off.png" alt="문화관광"></a></li>
+					<li title="테마관광"><a href="#"><img src="images/sub01-list-off.png" alt="테마관광"></a></li>
+					<li title="도보"><a href="#"><img src="images/sub01-list-off.png" alt="도보"></a></li>
+					<li title="레저/체험"><a href="#"><img src="images/sub01-list-off.png" alt="레저/체험"></a></li>
+					<li title="섬 속의 섬"><a href="#"><img src="images/sub01-list-off.png" alt="섬 속의 섬"></a></li>
+				</ul>
+				<h3>전체</h3>
+				<h3><img src="images/sub01-map01.png" alt="전체"></h3>
+				<p id="button">지도에서 선택<span class="icon-angle-down"></span></p>
+				<div class="hidden-menu">					
+				</div>
+			</div>
+
+			<div class="content">
+				<section> <!-------- 페이지1 --------->
+					<div class="card" id="card1"><a href="#"> <!--새별오름-->
+						<dl class="info">
+							<dt>새별오름</dt>
+							<dd>제주시 &gt; 애월</dd>
+							<dd>#일몰 #밤 #오름</dd>
+							<dd>#걷기/등산 #아이 #봄</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>30</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>548</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>340</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card2"><a href="#"> <!--사려니숲길-->
+						<dl class="info">
+							<dt>사려니숲길</dt>
+							<dd>제주시 &gt; 조천</dd>
+							<dd>#숲길 #걷기/등산 #친구</dd>
+							<dd>#커플 #흐림 #봄</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>126</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1628</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>498</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card3"><a href="#"> <!--우도-->
+						<dl class="info">
+							<dt>우도(해양도립공원)</dt>
+							<dd>섬 속의 섬 &gt; 우도</dd>
+							<dd>#섬속의섬 #경관/포토 #아이</dd>
+							<dd>#맑음</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>108</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,189</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>588</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card4"><a href="#"> <!--성산일출봉-->
+						<dl class="info">
+							<dt>성산일출봉(UNESCO 세계자연유산)</dt>
+							<dd>서귀포시 &gt; 성산</dd>
+							<dd>#일출 #오름 #경관/포토</dd>
+							<dd>#부모</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>162</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>2,115</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>577</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card5"><a href="#">  <!--카멜리아힐-->
+						<dl class="info">
+							<dt>카멜리아힐</dt>
+							<dd>서귀포시 &gt; 안덕</dd>
+							<dd>#경관/포토 #커플 #아이</dd>
+							<dd>#맑음 #겨울 #우수관광사업체</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>98</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,862</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>469</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card6"><a href="#"> <!--협재해수욕장-->
+						<dl class="info">
+							<dt>협재해수욕장</dt>
+							<dd>제주시 &gt; 한림</dd>
+							<dd>#일몰 #해수욕장 #액티비티</dd>
+							<dd>#아이 #맑음 #여름</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>100</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,530</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>448</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+				</section>
+				<section> <!-------- 페이지2 --------->
+					<div class="card" id="card7"><a href="#"> <!--월정리해변-->
+						<dl class="info">
+							<dt>월정리해변</dt>
+							<dd>제주시 &gt; 구좌</dd>
+							<dd>#해변 #경관/포토 #커플</dd>
+							<dd>#여름</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>68</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,497</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>440</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card8"><a href="#"> <!--함덕해수욕장-->
+						<dl class="info">
+							<dt>함덕해수욕장</dt>
+							<dd>제주시 &gt; 조천</dd>
+							<dd>#해수욕장 #액티비티 #아이</dd>
+							<dd>#맑음 #여름</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>40</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>865</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>427</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card9"><a href="#"> <!--산굼부리-->
+						<dl class="info">
+							<dt>산굼부리</dt>
+							<dd>제주시 &gt; 조천</dd>
+							<dd>#오름 #걷기/등산 #친구</dd>
+							<dd>#맑음 #가을 #우수관광사업체</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>108</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,189</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>588</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card10"><a href="#"> <!--섭지코지-->
+						<dl class="info">
+							<dt>섭지코지</dt>
+							<dd>서귀포시 &gt; 성산</dd>
+							<dd>#일출 #해변 #경관/포토</dd>
+							<dd>#커플 #맑음 #가을</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>69</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,616</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>336</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card11"><a href="#">  <!--오설록티뮤지엄-->
+						<dl class="info">
+							<dt>오설록티뮤지엄</dt>
+							<dd>서귀포시 &gt; 안덕</dd>
+							<dd>#테마공원 #커플 #친구</dd>
+							<dd>#부모 #아이 #혼자 #맑음 #휴식/힐링 #녹차</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>51</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,421</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>308</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card12"><a href="#"> <!--한라산 국립공원-->
+						<dl class="info">
+							<dt>한라산 국립공원</dt>
+							<dd>제주시 &gt; 제주시내</dd>
+							<dd>#산 #걷기/등산 #경관/포토</dd>
+							<dd>#친구 #사계절</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>74</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>638</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>304</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+				</section>
+				<section> <!-------- 페이지3 --------->
+					<div class="card" id="card13"><a href="#"> <!--제주4·3평화공원-->
+						<dl class="info">
+							<dt>제주4·3평화공원</dt>
+							<dd>제주시 &gt; 제주시내</dd>
+							<dd>#테마공원 #부모 #커플</dd>
+							<dd>#혼자 #친구 #아이 #맑음 #흐림 #미술/박물관 #실내</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>41</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>160</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>269</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card2"><a href="#"> <!--사려니숲길-->
+						<dl class="info">
+							<dt>사려니숲길</dt>
+							<dd>제주시 &gt; 조천</dd>
+							<dd>#숲길 #걷기/등산 #친구</dd>
+							<dd>#커플 #흐림 #봄</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>126</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1628</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>498</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card3"><a href="#"> <!--우도-->
+						<dl class="info">
+							<dt>우도(해양도립공원)</dt>
+							<dd>섬 속의 섬 &gt; 우도</dd>
+							<dd>#섬속의섬 #경관/포토 #아이</dd>
+							<dd>#맑음</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>108</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,189</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>588</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card4"><a href="#"> <!--성산일출봉-->
+						<dl class="info">
+							<dt>성산일출봉(UNESCO 세계자연유산)</dt>
+							<dd>서귀포시 &gt; 성산</dd>
+							<dd>#일출 #오름 #경관/포토</dd>
+							<dd>#부모</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>162</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>2,115</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>577</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card5"><a href="#">  <!--카멜리아힐-->
+						<dl class="info">
+							<dt>카멜리아힐</dt>
+							<dd>서귀포시 &gt; 안덕</dd>
+							<dd>#경관/포토 #커플 #아이</dd>
+							<dd>#맑음 #겨울 #우수관광사업체</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>98</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,862</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>469</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+					<div class="card" id="card6"><a href="#"> <!--협재해수욕장-->
+						<dl class="info">
+							<dt>협재해수욕장</dt>
+							<dd>제주시 &gt; 한림</dd>
+							<dd>#일몰 #해수욕장 #액티비티</dd>
+							<dd>#아이 #맑음 #여름</dd>
+						</dl>
+						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
+						<ul class="ref">
+							<li>
+								<dl>
+									<dt><img src="images/like.png" alt="좋아요"></dt>
+									<dd>좋아요</dd>
+									<dd>100</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
+									<dd>찜하기</dd>
+									<dd>1,530</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt><img src="images/review.png" alt="리뷰"></dt>
+									<dd>리뷰</dd>
+									<dd>448</dd>
+								</dl>
+							</li>
+						</ul>
+					</a></div>
+				</section>				
+			</div>
+			<!--<span id="prev">&lt;</span>이전-->
+			<ul id="pagebar">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+			<!--<span id="next">&gt;</span>다음-->
+			
+			<footer id="footer">
+				<div id="fnb">
+					<dl><a href="#">
+						<dt><img src="images/fnb01.png" alt="장애인 관광정보"></dt>
+						<dd>장애인 관광정보</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/fnb02.png" alt="안내 책자"></dt>
+						<dd>안내책자</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/fnb03.png" alt="제주 관광지도"></dt>
+						<dd>제주 관광지도</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/fnb04.png" alt="제주 관광정보센터"></dt>
+						<dd>제주관광정보센터</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/fnb05.png" alt="관광업체등록신청"></dt>
+						<dd>관광업체등록신청</dd>
+					</a></dl>
+					<dl><a href="#">
+						<dt><img src="images/fnb06.png" alt="포토 제주"></dt>
+						<dd>포토제주</dd>
+					</a></dl>
+				</div>
+				<div>
+					<ul id="app">
+						<li>VISITJEJU<br/>APP</li>
+						<li><a href="#" title="안드로이드 앱"><img src="images/app01.png" alt="안드로이드"></a></li>
+						<li><a href="#" title="IOS 앱"><img src="images/app02.png" alt="IOS"></a></li>
+					</ul>
+					<ul id="sns">
+						<li><a href="#" title="트위터"><img src="images/sns01.png" alt="트위터"></a></li>
+						<li><a href="#" title="페이스북"><img src="images/sns02.png" alt="페이스북"></a></li>
+						<li><a href="#" title="네이버 블로그"><img src="images/sns03.png" alt="네이버블로그"></a></li>
+						<li><a href="#" title="인스타그램"><img src="images/sns04.png" alt="인스타그램"></a></li>
+						<li><a href="#" title="카카오톡"><img src="images/sns05.png" alt="카카오톡"></a></li>
+					</ul>
+				</div>
+				<ul id="imp">
+					<li><a href="#">개인정보처리방침</a></li>
+					<li><a href="#">이용약관</a></li>
+					<li><a href="#">틀린정보신고</a></li>
+					<li><a href="#">제주관광문의</a></li>
+					<li><a href="#">제주관광사진이용</a></li>
+					<li><a href="#">제주소식</a></li>
+					<li><a href="#">관광업체등록신청</a></li>
+				</ul>
+				<address>
+					CopyrightⓒBoYoung Kim, All right reserved.
+				</address>
+			</footer>	
+		</div>
+		
+</body>
+</html>
