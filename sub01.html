@@ -12,9 +12,27 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript"> //꽃잎 날리는 효과
-		$(window).load(function () {
-		    $('body').sakura();
-		});
+			$(window).load(function () {
+			    $('body').sakura();
+			});
+		</script>
+
+		<script type="text/javascript"> //날씨 정보 
+			$(document).ready(function(){
+				$('#fixed').css('opacity','0').hide();
+				$(window).scroll(function(){				
+					if($(document).scrollTop()>100){
+						$('#fixed').show().css('opacity','0.8');
+					}else{
+						$('#fixed').css('opacity','0');
+					}
+				});
+				$('#fixed').mouseenter(function(){
+					$(this).css('opacity','1');
+				}).mouseleave(function(){
+					$(this).css('opacity','0.8');
+				})
+			});
 		</script>
 
 		<script src="nice/jquery.nicescroll.min.js"></script>		
@@ -60,6 +78,15 @@
 			});
 		</script>
 
+		<script type="text/javascript">
+			$(function(){
+				$('.header dd').hide();
+				$('.header #button').click(function(){
+					$('.header dd').slideToggle();
+				})
+			})
+		</script>
+
 		<script type="text/javascript"> //content section 카드에 백그라운드 이미지 순서대로 삽입
 			$(function(){
 				var n = 1;
@@ -83,62 +110,8 @@
 					$(this).addClass('on');
 					$('section').eq($(this).index()).show();
 				});
-				/*
-				$('#prev').click(function(){
-					var prev = $('#pagebar li').index();
-					$('section').hide();
-					$("html, body").animate({ scrollTop: 1400 }, 600);
-					$('section').eq(prev).show();
-					$('#pagebar li').removeClass('on');
-					$('#pagebar li').eq(prev).addClass('on');
-				});
-				$('#next').click(function(){
-					var next = $('#pagebar li').index()+1;
-					$('section').hide();
-					$("html, body").animate({ scrollTop: 1400 }, 600);
-					$('section').eq(next).show();
-					$('#pagebar li').removeClass('on');
-					$('#pagebar li').eq(next).addClass('on');
-				});
-				*/
 			})
 		</script>
-
-		<script type="text/javascript"> //section6 슬라이드 제주공항주변
-	   		$(document).ready(function(){ 
-		        var list = $("#section6 #content1 .roomlist-in");
-		        var showNum = 3;
-		        var num = 0;
-		        var total = $(">dl", list).length;
-		        var liWidth = $("dl:first", list).width()+60;
-		        var copyObj = $(">dl:lt("+showNum+")", list).clone();
-		        list.append(copyObj);
-		        $("#section6 #content1 .next").on("click", function(){
-		            if(num == total){ 
-		                num = 0; 
-		                list.css("margin-left",num); 
-		            }
-		            num++; 
-		            list.stop().animate({marginLeft:-liWidth*num+"px"},500);
-		            return false;
-		        });
-		        
-		        
-		        $("#section6 #content1 .prev").on("click", function(){
-		          if(num == 0){    
-		              num = total; 
-		              list.css("margin-left", -num*liWidth+"px");
-		          }
-		          num--;
-		          list.stop().animate({marginLeft:-liWidth*num+"px"},500);
-		          return false;
-		        });
-		    });  
-		</script>
-
-		
-
-
 
 	<!--------------------------link-------------------------->
 		<link rel="icon" type="image/x-icon" href="images/web_logo.png">
@@ -146,7 +119,6 @@
 		<link rel="stylesheet" href="scrollbar/jquery.mCustomScrollbar.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquery-sakura.css">
 		<link rel="stylesheet" type="text/css" href="fontello/css/fontello.css">
-
 
 	<!--------------------------font-------------------------->
 		<style>
@@ -175,7 +147,8 @@
 			img {vertical-align:top;}
 			a{text-decoration:none; color:#000;}
 			li{list-style:none;}
-			#pagebar li.on {background-color:#f15a24; color:#fff;}
+			#pagebar li.on {background-color:#f15a24; color:#fff; border:1px solid #f15a24;}
+			#filter li.on {background-color:#f15a24; color:#fff; border:1px solid #f15a24;}
 		</style>
 
 	<title>관광 - 비짓제주 VISIT JEJU</title>
@@ -185,6 +158,9 @@
 			<header>
 				<p><img src="images/menu_icon.gif" alt="메뉴"></p> <!--팝업메뉴 아이콘-->		
 			</header>
+			<div id="fixed">
+				<a href="#" title="날씨"><img src="images/mik_pop.png" alt="날씨정보"></a>
+			</div>
 			<div id="menu">
 				<p><img src="images/close.jpg" alt="창 끄기"></p> <!--팝업메뉴 닫기 아이콘-->
 				<ul id="menu-in"><!--팝업메뉴 목록-->
@@ -310,9 +286,24 @@
 				</ul>
 				<h3>전체</h3>
 				<h3><img src="images/sub01-map01.png" alt="전체"></h3>
-				<p id="button">지도에서 선택<span class="icon-angle-down"></span></p>
+				<dl>
+					<dt id="button">지도에서 선택<span class="icon-angle-down"></span></dt>
+					<dd><img src="images/sub01-map.jpg" alt="전체 지도"></dd>
+				</dl>
 				<div class="hidden-menu">					
 				</div>
+			</div>
+
+			<div class="mid">
+				<!--<form id="search">					
+					<input type="text">
+					<button class="icon-search-1"></button>
+				</form>-->
+				
+				<ul id="filter">
+					<li class="on">인기순</li>
+					<li>이름순</li>
+				</ul>				
 			</div>
 
 			<div class="content">
@@ -369,7 +360,7 @@
 								<dl>
 									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
 									<dd>찜하기</dd>
-									<dd>1628</dd>
+									<dd>1,628</dd>
 								</dl>
 							</li>
 							<li>
@@ -737,12 +728,12 @@
 							</li>
 						</ul>
 					</a></div>
-					<div class="card" id="card2"><a href="#"> <!--사려니숲길-->
+					<div class="card" id="card14"><a href="#"> <!--에코랜드 테마파크-->
 						<dl class="info">
-							<dt>사려니숲길</dt>
+							<dt>에코랜드 테마파크</dt>
 							<dd>제주시 &gt; 조천</dd>
-							<dd>#숲길 #걷기/등산 #친구</dd>
-							<dd>#커플 #흐림 #봄</dd>
+							<dd>#테마공원 #아이 #맑음</dd>
+							<dd>#가을</dd>
 						</dl>
 						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
 						<ul class="ref">
@@ -750,31 +741,31 @@
 								<dl>
 									<dt><img src="images/like.png" alt="좋아요"></dt>
 									<dd>좋아요</dd>
-									<dd>126</dd>
+									<dd>38</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
 									<dd>찜하기</dd>
-									<dd>1628</dd>
+									<dd>1,092</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/review.png" alt="리뷰"></dt>
 									<dd>리뷰</dd>
-									<dd>498</dd>
+									<dd>242</dd>
 								</dl>
 							</li>
 						</ul>
 					</a></div>
-					<div class="card" id="card3"><a href="#"> <!--우도-->
+					<div class="card" id="card15"><a href="#"> <!--용눈이오름-->
 						<dl class="info">
-							<dt>우도(해양도립공원)</dt>
-							<dd>섬 속의 섬 &gt; 우도</dd>
-							<dd>#섬속의섬 #경관/포토 #아이</dd>
-							<dd>#맑음</dd>
+							<dt>용눈이오름</dt>
+							<dd>제주시 &gt; 구좌</dd>
+							<dd>#일출 #밤 #오름</dd>
+							<dd>#걷기/등산 #친구 #가을</dd>
 						</dl>
 						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
 						<ul class="ref">
@@ -782,31 +773,31 @@
 								<dl>
 									<dt><img src="images/like.png" alt="좋아요"></dt>
 									<dd>좋아요</dd>
-									<dd>108</dd>
+									<dd>18</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
 									<dd>찜하기</dd>
-									<dd>1,189</dd>
+									<dd>477</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/review.png" alt="리뷰"></dt>
 									<dd>리뷰</dd>
-									<dd>588</dd>
+									<dd>231</dd>
 								</dl>
 							</li>
 						</ul>
 					</a></div>
-					<div class="card" id="card4"><a href="#"> <!--성산일출봉-->
+					<div class="card" id="card16"><a href="#"> <!--비자림-->
 						<dl class="info">
-							<dt>성산일출봉(UNESCO 세계자연유산)</dt>
-							<dd>서귀포시 &gt; 성산</dd>
-							<dd>#일출 #오름 #경관/포토</dd>
-							<dd>#부모</dd>
+							<dt>비자림</dt>
+							<dd>제주시 &gt; 구좌</dd>
+							<dd>#걷기/등산 #아이 #흐림</dd>
+							<dd>#여름</dd>
 						</dl>
 						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
 						<ul class="ref">
@@ -814,31 +805,31 @@
 								<dl>
 									<dt><img src="images/like.png" alt="좋아요"></dt>
 									<dd>좋아요</dd>
-									<dd>162</dd>
+									<dd>42</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
 									<dd>찜하기</dd>
-									<dd>2,115</dd>
+									<dd>1,183</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/review.png" alt="리뷰"></dt>
 									<dd>리뷰</dd>
-									<dd>577</dd>
+									<dd>207</dd>
 								</dl>
 							</li>
 						</ul>
 					</a></div>
-					<div class="card" id="card5"><a href="#">  <!--카멜리아힐-->
+					<div class="card" id="card17"><a href="#">  <!--천지연폭포-->
 						<dl class="info">
-							<dt>카멜리아힐</dt>
-							<dd>서귀포시 &gt; 안덕</dd>
-							<dd>#경관/포토 #커플 #아이</dd>
-							<dd>#맑음 #겨울 #우수관광사업체</dd>
+							<dt>천지연폭포</dt>
+							<dd>서귀포시 &gt; 서귀포 시내</dd>
+							<dd>#폭포 #밤 #경관/포토</dd>
+							<dd>#부모 #맑음 #여름</dd>
 						</dl>
 						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
 						<ul class="ref">
@@ -846,31 +837,31 @@
 								<dl>
 									<dt><img src="images/like.png" alt="좋아요"></dt>
 									<dd>좋아요</dd>
-									<dd>98</dd>
+									<dd>49</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/web_logo.png" alt="찜하기"></dt>
 									<dd>찜하기</dd>
-									<dd>1,862</dd>
+									<dd>1,239</dd>
 								</dl>
 							</li>
 							<li>
 								<dl>
 									<dt><img src="images/review.png" alt="리뷰"></dt>
 									<dd>리뷰</dd>
-									<dd>469</dd>
+									<dd>196</dd>
 								</dl>
 							</li>
 						</ul>
 					</a></div>
-					<div class="card" id="card6"><a href="#"> <!--협재해수욕장-->
+					<div class="card" id="card18"><a href="#"> <!--세화해변-->
 						<dl class="info">
-							<dt>협재해수욕장</dt>
-							<dd>제주시 &gt; 한림</dd>
-							<dd>#일몰 #해수욕장 #액티비티</dd>
-							<dd>#아이 #맑음 #여름</dd>
+							<dt>세화해변</dt>
+							<dd>제주시 &gt; 구좌</dd>
+							<dd>#해변 #휴식/힐링 #커플</dd>
+							<dd>#맑음 #여름</dd>
 						</dl>
 						<p class="stars"><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span><span class="icon-star-filled"></span></p>
 						<ul class="ref">
@@ -899,13 +890,12 @@
 					</a></div>
 				</section>				
 			</div>
-			<!--<span id="prev">&lt;</span>이전-->
+			
 			<ul id="pagebar">
 				<li>1</li>
 				<li>2</li>
 				<li>3</li>
 			</ul>
-			<!--<span id="next">&gt;</span>다음-->
 			
 			<footer id="footer">
 				<div id="fnb">

@@ -17,6 +17,12 @@
       "css": "star-filled",
       "code": 59392,
       "src": "typicons"
+    },
+    {
+      "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
+      "css": "search-1",
+      "code": 59394,
+      "src": "fontawesome"
     }
   ]
 }
